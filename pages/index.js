@@ -1,0 +1,96 @@
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import Section from "../components/Section.js";
+import Properties from "../components/Properties.js";
+
+/*---------- Instancias de Popups ----------*/
+
+const newCardPopup = new PopupWithForm("#new-card-popup", handleCardFormSubmit);
+
+/*---------- Función callback para manejar el click en la imagen de la tarjeta ----------*/
+
+const handleCardClick = (id) => {
+  location.href = `property.html?id=${id}`;
+};
+
+/*---------- Initial Properties en properties.js ----------*/
+
+function renderCard(item) {
+  const newCard = new Card(item, "#card-template", handleCardClick);
+  const cardElement = newCard.generateCard();
+
+  return cardElement;
+}
+
+const section = new Section(
+  {
+    items: Properties,
+    renderer: renderCard,
+  },
+  ".cards__list",
+);
+
+section.renderItems();
+
+/*---------- Popup Add Card ----------*/
+
+const profileAddButton = document.querySelector(".nav__list-link__card");
+profileAddButton.addEventListener("click", () => {
+  newCardPopup.open();
+});
+
+const saveCardForm = document.querySelector("#new-card-form");
+function handleCardFormSubmit(formData) {
+  const card = new Card(
+    {
+      id: formData.id,
+      hero: formData.hero,
+      title: formData.title,
+      price: formData.price,
+      comment: formData.comment,
+      features: formData.features,
+      gallery: formData.gallery,
+    },
+    "#card-template",
+    handleCardClick,
+  );
+  const cardElement = card.generateCard();
+  section.addItem(cardElement);
+
+  /*--- Deshabilitar botón "Crear" y limpiar formulario ---*/
+
+  const newCardSubmitButton = saveCardForm.querySelector(".popup__button");
+  newCardSubmitButton.disabled = true;
+  saveCardForm.reset();
+
+  newCardPopup.close();
+}
+
+//*---------- Objeto config para validación ----------*/
+
+const validationConfig = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_error",
+  errorClass: "popup__error_active",
+};
+
+/*---------- Instanciar validadores ----------*/
+
+const cardFormValidator = new FormValidator(
+  validationConfig,
+  document.querySelector("#new-card-form"),
+);
+
+// Habilitar validación
+
+cardFormValidator.enableValidation();
+
+/*---------- Formulario de Previews ----------*/
+
+const newPreview = document.querySelector(".nav__list-link__preview");
+newPreview.addEventListener("click", () => {
+  window.location.href = "./admin-previews.html";
+});

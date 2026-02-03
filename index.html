@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
+    <title>Ficha Técnica Inmobiliaria</title>
+    <link href="./pages/index.css" rel="stylesheet" />
+  </head>
+  <body class="page">
+    <div class="page__content">
+      <header class="header page__section">
+        <nav class="header__nav" aria-label="Navegación principal del sitio">
+          <ul class="nav__list">
+            <li class="nav__list-item nav__dropdown">
+              <button class="nav__list-link" type="button">Inicio</button>
+              <div class="nav__dropdown-content">
+                <button
+                  class="nav__list-link nav__list-link__card"
+                  type="button"
+                >
+                  Card
+                </button>
+                <button
+                  class="nav__list-link nav__list-link__preview"
+                  type="button"
+                >
+                  Preview
+                </button>
+              </div>
+            </li>
+            <li class="nav__list-item nav__dropdown">
+              <button class="nav__list-link" type="button">About</button>
+              <div class="nav__dropdown-content">
+                <button
+                  class="nav__list-link nav__list-link__new"
+                  type="button"
+                >
+                  Me
+                </button>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main class="content">
+        <section class="cards page__section">
+          <ul class="cards__list">
+            <template id="card-template">
+              <li class="card">
+                <img class="card__image" src="" alt="" />
+                <button
+                  aria-label="Eliminar tarjeta"
+                  class="card__delete-button"
+                  type="button"
+                ></button>
+                <div class="card__description">
+                  <p class="card__id"></p>
+                  <p class="card__title"></p>
+                  <p class="card__price"></p>
+                  <p class="card__comment"></p>
+                  <p class="card__features"></p>
+                  <div class="card__gallery">
+                    <!-- Galeria de imagenes -->
+                  </div>
+                  <div class="card__bottom_buttons">
+                    <button
+                      aria-label="Botón Whatsapp"
+                      class="card__whatsapp-button"
+                      type="button"
+                    ></button>
+                    <button
+                      aria-label="Botón Me gusta"
+                      class="card__like-button"
+                      type="button"
+                    ></button>
+                  </div>
+                </div>
+              </li>
+            </template>
+          </ul>
+        </section>
+      </main>
+      <footer class="footer page__section">
+        <p class="footer__copyright">© 2026 Sergio Verástegui Vega</p>
+      </footer>
+      <div class="popup" id="new-card-popup">
+        <div class="popup__content">
+          <button
+            aria-label="Cerrar ventana emergente"
+            class="popup__close"
+            type="button"
+          ></button>
+          <h3 class="popup__title">Nuevo lugar</h3>
+          <form class="popup__form" id="new-card-form" name="new-card-form">
+            <!-- <label class="input__label">Id</label> -->
+            <input
+              class="popup__input popup__input_type_card-id"
+              name="id"
+              placeholder="Id"
+              required
+              type="number"
+              min="1"
+            />
+            <span class="popup__error popup__error_id"></span>
+            <!-- <label class="input__label">Hero</label> -->
+            <input
+              class="popup__input popup__input_type_card-hero"
+              name="hero"
+              placeholder="Hero"
+              required
+              type="text"
+              minlength="2"
+            />
+            <span class="popup__error popup__error_hero"></span>
+            <!-- <label class="input__label">Title</label> -->
+            <input
+              class="popup__input popup__input_type_card-title"
+              name="title"
+              placeholder="Title"
+              required
+              type="text"
+              minlength="2"
+            />
+            <span class="popup__error popup__error_title"></span>
+            <!-- <label class="input__label">Precio</label> -->
+            <input
+              class="popup__input popup__input_type_card-price"
+              name="price"
+              placeholder="Precio"
+              required
+              type="text"
+              minlength="2"
+            />
+            <span class="popup__error popup__error_price"></span>
+            <!-- <label class="input__label">Descripción</label> <br /> -->
+            <textarea
+              class="popup__input popup__textarea input__textarea-description"
+              name="description"
+              placeholder="Descripción (una por renglón)"
+              required
+              minlength="2"
+            ></textarea>
+            <span class="popup__error popup__error_features"></span>
+            <!-- <label class="input__label">Features</label> <br /> -->
+            <textarea
+              class="popup__input popup__textarea input__textarea-features"
+              name="features"
+              placeholder="Features (una por renglón)"
+              required
+              minlength="2"
+            ></textarea>
+            <span class="popup__error popup__error_features"></span>
+            <!-- <label class="input__label">Galería</label> -->
+            <textarea
+              class="popup__input popup__textarea input__textarea-gallery"
+              name="gallery"
+              placeholder="Galería (una imagen por renglón)"
+              required
+              minlength="2"
+            ></textarea>
+            <span class="popup__error popup__error_gallery"></span>
+            <button class="button popup__button" type="submit" disabled>
+              Crear
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="popup" id="image-popup">
+        <div class="popup__content popup__content_content_image">
+          <button
+            aria-label="Cerrar ventana emergente"
+            class="popup__close"
+            type="button"
+          ></button>
+          <img alt="" class="popup__image" src="#" />
+          <p class="popup__caption"></p>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./pages/index.js"></script>
+  </body>
+</html>

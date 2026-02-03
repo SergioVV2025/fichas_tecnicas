@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Admin · Generador de Previews</title>
+
+    <link rel="stylesheet" href="./blocks/admin-previews.css" />
+  </head>
+
+  <body>
+    <main class="previews">
+      <h1 class="previews__title">Generador de previews para WhatsApp</h1>
+
+      <form class="previews__form" id="previewForm">
+        <label class="previews__label">ID de la propiedad</label>
+        <input id="id" type="number" min="1" class="previews__input" required />
+
+        <label class="previews__label">Título</label>
+        <input id="title" class="previews__input" required />
+
+        <label class="previews__label">Descripción Open Graph</label>
+        <textarea
+          id="description"
+          class="previews__textarea"
+          maxlength="120"
+          required
+        ></textarea>
+
+        <label class="previews__label">Imagen Open Graph (URL absoluta)</label>
+        <input
+          id="image"
+          class="previews__input"
+          placeholder="https://"
+          required
+        />
+
+        <label class="previews__label">URL pública base del proyecto</label>
+        <input
+          id="baseUrl"
+          class="previews__input"
+          placeholder="https://usuario.github.io/proyecto/"
+          required
+        />
+
+        <button type="submit" class="previews__button">
+          Generar archivo preview
+        </button>
+      </form>
+
+      <section class="previews__result" id="result" hidden>
+        <h3>Archivo generado correctamente ✔</h3>
+        <p>Listo para enviarse por WhatsApp</p>
+      </section>
+    </main>
+
+    <script src="./components/admin-previews.js"></script>
+  </body>
+</html>
