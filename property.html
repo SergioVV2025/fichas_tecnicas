@@ -3,66 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Propiedad</title>
-
     <link rel="stylesheet" href="./blocks/property.css" />
   </head>
-
   <body>
     <main class="property">
+      <!-- ERROR -->
       <section class="property__content-error">
-        <h3 class="property__content-title"></h3>
-        <p class="property__content-text"></p>
+        <h3 class="property__content-title">
+          La Propiedad no se ha encontrado.
+        </h3>
+        <p class="property__content-text">
+          La propiedad que está buscando ha sido borrada o no se ha actualizado.
+        </p>
         <br />
-        <button class="property__button-goback" type="button"></button>
+        <button class="property__button-goback" type="button">
+          Volver a propiedades
+        </button>
       </section>
-      <!-- HERO -->
-      <header>
-        <a href="index.html" class="property__back-link">
-          ← Ver más propiedades
-        </a>
-        <img class="property__hero-image" src="" alt="" />
-      </header>
+      <!-- TEMPLATE -->
+      <template id="property__template">
+        <section class="property__content">
+          <!-- HERO -->
+          <div>
+            <img class="property__hero-image" src="" alt="" />
+          </div>
 
-      <div class="property__content">
-        <!-- TÍTULO Y PRECIO -->
-        <section>
-          <h1 class="property__title"></h1>
-          <p class="property__price"></p>
-        </section>
+          <!-- TÍTULO Y PRECIO -->
+          <div>
+            <h1 class="property__title"></h1>
+            <p class="property__price"></p>
+          </div>
 
-        <!-- CARACTERÍSTICAS -->
-        <section>
-          <ul class="property__features-list">
-            <!-- <li class="property__feature"></li> -->
-          </ul>
-        </section>
+          <!-- CARACTERÍSTICAS -->
+          <div>
+            <ul class="property__features-list">
+              <!-- <li class="property__feature"></li> -->
+            </ul>
+          </div>
 
-        <!-- DESCRIPCIÓN -->
-        <section>
-          <p class="property__comment"></p>
-        </section>
+          <!-- DESCRIPCIÓN -->
+          <div>
+            <p class="property__comment"></p>
+          </div>
 
-        <!-- GALERÍA -->
-        <section class="property__gallery">
-          <img class="property__gallery-image" src="" alt="" />
-          <button class="property__image_btn-back">
-            <img src="./images/arrow_back.png" alt="arrow_back" />
-          </button>
-          <button class="property__image_btn-forward">
-            <img src="./images/arrow_forward.png" alt="arrow_forward" />
-          </button>
+          <!-- GALERÍA -->
+          <div class="property__gallery">
+            <img class="property__gallery-image" src="" alt="" />
+            <button class="property__image_btn-back">
+              <img src="./images/arrow_back.png" alt="arrow_back" />
+            </button>
+            <button class="property__image_btn-forward">
+              <img src="./images/arrow_forward.png" alt="arrow_forward" />
+            </button>
+          </div>
+          <div class="property__cta">
+            <a class="property__cta-button" href="https://wa.me/521XXXXXXXXXX">
+              Contactar por WhatsApp
+            </a>
+            <!-- <a class="property__cta-button" href="https://wa.me/525552178925">
+              Contactar por WhatsApp
+            </a> -->
+          </div>
         </section>
-
-        <!-- CTA -->
-        <section class="property__cta">
-          <a class="property__cta-button" href="https://wa.me/521XXXXXXXXXX">
-            Contactar por WhatsApp
-          </a>
-        </section>
-      </div>
+      </template>
     </main>
-    <script type="module" src="./components/Property.js"></script>
+    <script type="module" src="./components/PropertyHandler.js"></script>
   </body>
 </html>

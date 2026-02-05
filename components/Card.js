@@ -9,6 +9,14 @@ class Card {
     this._gallery = data.gallery;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
+    this._isLiked = false;
+  }
+
+  _like() {
+    this._isLiked = !this._isLiked;
+    this._isLiked
+      ? alert("You liked the song!")
+      : alert("You unliked the song!");
   }
 
   _getTemplate() {
@@ -29,6 +37,7 @@ class Card {
       this._cardElement.querySelector(".card__like-button");
     cardLikeButton.addEventListener("click", (evt) => {
       evt.target.classList.toggle("card__like-button_is-active");
+      this._like();
     });
 
     const cardDeleteButton = this._cardElement.querySelector(

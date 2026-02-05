@@ -26,6 +26,8 @@
 }
 
 .nav__list-link {
+  width: 100%;
+  text-align: left;
   border: none;
   background-color: transparent;
 }

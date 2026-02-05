@@ -3,15 +3,20 @@ import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import Properties from "../components/Properties.js";
+import { fillPreview } from "../components/admin-previews.js";
 
 /*---------- Instancias de Popups ----------*/
 
 const newCardPopup = new PopupWithForm("#new-card-popup", handleCardFormSubmit);
+const newPreviewPopup = new PopupWithForm(
+  "#new-preview-popup",
+  handlePreviewFormSubmit,
+);
 
 /*---------- Función callback para manejar el click en la imagen de la tarjeta ----------*/
 
 const handleCardClick = (id) => {
-  location.href = `property.html?id=${id}`;
+  window.open(`property.html?id=${id}`, "_blank");
 };
 
 /*---------- Initial Properties en properties.js ----------*/
@@ -48,7 +53,7 @@ function handleCardFormSubmit(formData) {
       hero: formData.hero,
       title: formData.title,
       price: formData.price,
-      comment: formData.comment,
+      comment: formData.description,
       features: formData.features,
       gallery: formData.gallery,
     },
@@ -65,6 +70,74 @@ function handleCardFormSubmit(formData) {
   saveCardForm.reset();
 
   newCardPopup.close();
+}
+
+/*---------- Formulario de Previews ----------*/
+
+const newPreview = document.querySelector(".nav__list-link__preview");
+newPreview.addEventListener("click", () => {
+  // window.open("./admin-previews.html", "_blank");
+  const previewIdMax = document.querySelector(".popup__input_type_property-id");
+  const max = Properties.length;
+  previewIdMax.setAttribute("max", max);
+  newPreviewPopup.open();
+});
+
+const newPreviewForm = document.forms["new-preview-form"];
+const previewId = newPreviewForm.id;
+const previewInputId = document.querySelector(".popup__input_type_property-id");
+previewInputId.addEventListener("change", () => {
+  recoverPropertyInfo(previewId.value - 1);
+});
+
+function recoverPropertyInfo(id) {
+  const propertyTitle = document.querySelector(
+    ".popup__input_type_property-title",
+  );
+  propertyTitle.value = Properties[id].title;
+  const descriptionOG = document.querySelector(
+    ".input__textarea-descriptionOG",
+  );
+
+  const pattern = /[^,.;:\n\t]+/g;
+  const featuresArray = Properties[id].features.match(pattern);
+  let featuresText = "";
+  for (let features of featuresArray) {
+    featuresText += "- " + features + "\n";
+  }
+
+  descriptionOG.value =
+    "\n" +
+    Properties[id].price.toString() +
+    "\n" +
+    featuresText +
+    Properties[id].comment;
+
+  const imageOG = document.querySelector(".popup__input_type_imageOG");
+  imageOG.value = Properties[id].hero;
+}
+
+// const savePreviewForm = document.querySelector("#new-preview-form");
+function handlePreviewFormSubmit(formData) {
+  const previewData = {
+    id: formData.id,
+    title: formData.title,
+    descriptionOG: formData.descriptionOG,
+    imageOG: formData.imageOG,
+    urlProject: formData.urlProject,
+  };
+  alert(
+    previewData.id +
+      "\n" +
+      previewData.title +
+      "\n" +
+      previewData.descriptionOG +
+      "\n" +
+      previewData.imageOG +
+      "\n" +
+      previewData.urlProject,
+  );
+  fillPreview(previewData);
 }
 
 //*---------- Objeto config para validación ----------*/
@@ -84,13 +157,12 @@ const cardFormValidator = new FormValidator(
   document.querySelector("#new-card-form"),
 );
 
+const previewFormValiator = new FormValidator(
+  validationConfig,
+  document.querySelector("#new-preview-form"),
+);
+
 // Habilitar validación
 
 cardFormValidator.enableValidation();
-
-/*---------- Formulario de Previews ----------*/
-
-const newPreview = document.querySelector(".nav__list-link__preview");
-newPreview.addEventListener("click", () => {
-  window.location.href = "./admin-previews.html";
-});
+previewFormValiator.enableValidation();

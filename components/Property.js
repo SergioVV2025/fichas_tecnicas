@@ -1,104 +1,119 @@
-import Properties from "./Properties.js";
-
-const imageArray = [];
-let i = 0;
-const galleryImage = document.querySelector(".property__gallery-image");
-
-function findId() {
-  const params = new URLSearchParams(window.location.search);
-  const id = Number(params.get("id"));
-  const property = Properties.find((p) => p.id === id);
-
-  if (property) {
-    displayHTML();
-    setHTML(Properties[id - 1]);
-  } else {
-    handleError();
-  }
-}
-
-function displayHTML() {
-  document.querySelector(".property__hero-image").style.display = "block";
-  document.querySelector(".property__cta-button").style.display = "block";
-}
-
-function setHTML(propertyElement) {
-  const heroImage = document.querySelector(".property__hero-image");
-  heroImage.setAttribute("src", propertyElement.hero);
-  heroImage.setAttribute("alt", propertyElement.hero);
-
-  const title = document.querySelector(".property__title");
-  title.textContent = propertyElement.title;
-
-  const price = document.querySelector(".property__price");
-  price.textContent = propertyElement.price;
-
-  const features = document.querySelector(".property__features-list");
-  const pattern = /[^,.;:\n\t]+/g;
-  const featuresArray = propertyElement.features.match(pattern);
-  let featureElement, featureText;
-  for (let feature of featuresArray) {
-    featureElement = document.createElement("li");
-    featureElement.className = "property__feature";
-    featureText = document.createTextNode(feature);
-    featureElement.append(featureText);
-    features.appendChild(featureElement);
+class Property {
+  constructor(properties, selector, config) {
+    this._propertyId = properties.id;
+    this._imageHero = properties.hero;
+    this._title = properties.title;
+    this._price = properties.price;
+    this._comment = properties.comment;
+    this._features = properties.features;
+    this._gallery = properties.gallery;
+    this._btnBack = config.btnBack;
+    this._btnForward = config.btnForward;
+    this._selector = selector;
+    this._i = 0;
   }
 
-  const comment = document.querySelector(".property__comment");
-  comment.textContent = propertyElement.comment;
+  findId(id, Properties) {
+    const result = Properties.find((p) => p.id === id);
 
-  for (i = 0; i < propertyElement.gallery.length; i++) {
-    imageArray[i] = propertyElement.gallery[i];
-  }
-
-  i = 0;
-  galleryImage.src = imageArray[i];
-}
-
-function handleError() {
-  const contentError = document.querySelector(".property__content-error");
-  contentError.style.display = "block";
-  const errorTitle = document.querySelector(".property__content-title");
-  errorTitle.textContent = "Propiedad no disponible";
-  const errorText = document.querySelector(".property__content-text");
-  errorText.textContent =
-    "La propiedad que buscas no existe o ya no está publicada.";
-  const propertyContent = document.querySelector(".property__content");
-  propertyContent.style.display = "none";
-  const propertyBackLink = document.querySelector(".property__back-link");
-  propertyBackLink.style.display = "none";
-}
-
-function setEventlisteners() {
-  const errorButton = document.querySelector(".property__button-goback");
-  errorButton.textContent = "Volver a Propiedades";
-  errorButton.addEventListener("click", () => {
-    window.location.href = "index.html";
-  });
-
-  const goBackImageBtn = document.querySelector(".property__image_btn-back");
-  goBackImageBtn.addEventListener("click", () => {
-    i--;
-    if (i >= 0) {
-      galleryImage.src = imageArray[i];
+    if (result) {
+      return true;
     } else {
-      i = imageArray.length - 1;
-      galleryImage.src = imageArray[i];
+      return false;
     }
-  });
+  }
 
-  const goFwdImageBtn = document.querySelector(".property__image_btn-forward");
-  goFwdImageBtn.addEventListener("click", () => {
-    i++;
-    if (i < imageArray.length) {
-      galleryImage.src = imageArray[i];
-    } else {
-      i = 0;
-      galleryImage.src = imageArray[i];
+  _getTemplate() {
+    const htmlElement = document
+      .querySelector(this._selector)
+      .content.querySelector(".property__content")
+      .cloneNode(true);
+    return htmlElement;
+  }
+
+  _setEventListeners() {
+    const htmlGalleryImage = this._htmlElement.querySelector(
+      ".property__gallery-image",
+    );
+
+    const btnImageBack = this._htmlElement.querySelector(this._btnBack);
+    btnImageBack.addEventListener("click", () => {
+      this._i--;
+      if (this._i >= 0) {
+        htmlGalleryImage.src = this._gallery[this._i];
+        htmlGalleryImage.alt = this._gallery[this._i];
+      } else {
+        this._i = this._gallery.length - 1;
+        htmlGalleryImage.src = this._gallery[this._i];
+        htmlGalleryImage.alt = this._gallery[this._i];
+      }
+    });
+
+    const btnImageFwd = this._htmlElement.querySelector(this._btnForward);
+    btnImageFwd.addEventListener("click", () => {
+      this._i++;
+      if (this._i < this._gallery.length) {
+        htmlGalleryImage.src = this._gallery[this._i];
+        htmlGalleryImage.alt = this._gallery[this._i];
+      } else {
+        this._i = 0;
+        htmlGalleryImage.src = this._gallery[this._i];
+        htmlGalleryImage.alt = this._gallery[this._i];
+      }
+    });
+  }
+
+  generateHTML() {
+    this._htmlElement = this._getTemplate();
+
+    const htmlHero = this._htmlElement.querySelector(".property__hero-image");
+    htmlHero.src = this._imageHero;
+    htmlHero.alt = this._imageHero;
+
+    const htmlTitle = this._htmlElement.querySelector(".property__title");
+    htmlTitle.textContent = this._title;
+
+    const htmlPrice = this._htmlElement.querySelector(".property__price");
+    htmlPrice.textContent = this._price;
+
+    const htmlFeatures = this._htmlElement.querySelector(
+      ".property__features-list",
+    );
+    const pattern = /[^,.;:\n\t]+/g;
+    const featuresArray = this._features.match(pattern);
+    let featureElement, featureText;
+    for (let feature of featuresArray) {
+      featureElement = document.createElement("li");
+      featureElement.className = "property__feature";
+      featureText = document.createTextNode(feature);
+      featureElement.append(featureText);
+      htmlFeatures.appendChild(featureElement);
     }
-  });
+
+    const htmlComment = this._htmlElement.querySelector(".property__comment");
+    htmlComment.textContent = this._comment;
+
+    const htmlGalleryImage = this._htmlElement.querySelector(
+      ".property__gallery-image",
+    );
+
+    htmlGalleryImage.src = this._gallery[this._i];
+    htmlGalleryImage.alt = this._gallery[this._i];
+
+    this._setEventListeners();
+
+    return this._htmlElement;
+  }
+
+  renderHTML(htmlElement, selector) {
+    const container = document.querySelector(selector);
+    container.append(htmlElement);
+  }
+
+  handleError(selector) {
+    const error = document.querySelector(selector);
+    error.style.display = "block";
+  }
 }
 
-findId();
-setEventlisteners();
+export default Property;

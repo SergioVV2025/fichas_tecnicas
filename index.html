@@ -91,7 +91,7 @@
             class="popup__close"
             type="button"
           ></button>
-          <h3 class="popup__title">Nuevo lugar</h3>
+          <h3 class="popup__title">Nueva propiedad</h3>
           <form class="popup__form" id="new-card-form" name="new-card-form">
             <!-- <label class="input__label">Id</label> -->
             <input
@@ -141,7 +141,7 @@
               required
               minlength="2"
             ></textarea>
-            <span class="popup__error popup__error_features"></span>
+            <span class="popup__error popup__error_description"></span>
             <!-- <label class="input__label">Features</label> <br /> -->
             <textarea
               class="popup__input popup__textarea input__textarea-features"
@@ -166,15 +166,72 @@
           </form>
         </div>
       </div>
-      <div class="popup" id="image-popup">
-        <div class="popup__content popup__content_content_image">
+      <div class="popup" id="new-preview-popup">
+        <div class="popup__content">
           <button
             aria-label="Cerrar ventana emergente"
             class="popup__close"
             type="button"
           ></button>
-          <img alt="" class="popup__image" src="#" />
-          <p class="popup__caption"></p>
+          <h3 class="popup__title">Nuevo preview</h3>
+          <form
+            class="popup__form"
+            id="new-preview-form"
+            name="new-preview-form"
+          >
+            <!-- <label class="input__label">Id</label> -->
+            <input
+              class="popup__input popup__input_type_property-id"
+              name="id"
+              placeholder="Id"
+              required
+              type="number"
+              min="1"
+            />
+            <span class="popup__error popup__error_id"></span>
+            <!-- <label class="input__label">Title</label> -->
+            <input
+              class="popup__input popup__input_type_property-title"
+              name="title"
+              placeholder="Title"
+              required
+              type="text"
+              minlength="2"
+            />
+            <span class="popup__error popup__error_title"></span>
+            <!-- <label class="input__label">Descripción Open Graph</label> <br /> -->
+            <textarea
+              class="popup__input popup__textarea input__textarea-descriptionOG"
+              name="descriptionOG"
+              placeholder="Descripción Open Graph"
+              required
+              minlength="2"
+            ></textarea>
+            <span class="popup__error popup__error_descriptionOG"></span>
+            <!-- <label class="input__label">Imagen Hero</label> -->
+            <input
+              class="popup__input popup__input_type_imageOG"
+              name="imageOG"
+              placeholder="https:// (Imagen Open Graph (URL absoluta))"
+              required
+              type="text"
+              minlength="2"
+            />
+            <span class="popup__error popup__error_imageOG"></span>
+            <!-- <label class="input__label">URL pública base del proyecto</label> -->
+            <input
+              class="popup__input popup__input_type_urlProject"
+              name="urlProject"
+              placeholder="https://usuario.github.io/proyecto/ (URL pública base del proyecto)"
+              required
+              type="text"
+              minlength="2"
+            />
+            <span class="popup__error popup__error_urlProject"></span>
+            <button class="button popup__button" type="submit" disabled>
+              Crear
+            </button>
+          </form>
         </div>
       </div>
     </div>

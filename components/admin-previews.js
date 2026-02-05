@@ -1,14 +1,17 @@
-const form = document.getElementById("previewForm");
-const result = document.getElementById("result");
+// const form = document.getElementById("previewForm");
+// const result = document.getElementById("result");
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+// form.addEventListener("submit", (event) => {
+//   event.preventDefault();
 
-  const id = document.getElementById("id").value.trim();
-  const title = document.getElementById("title").value.trim();
-  const description = document.getElementById("description").value.trim();
-  const image = document.getElementById("image").value.trim();
-  const baseUrl = document.getElementById("baseUrl").value.trim();
+function fillPreview(previewData) {
+  const id = previewData.id.trim();
+  const title = previewData.title.trim();
+  const description = previewData.descriptionOG.trim();
+  const image = previewData.imageOG.trim();
+  const baseUrl = previewData.urlProject.trim();
+
+  alert(id + "\n" + title + "\n" + description + "\n" + image + "\n" + baseUrl);
 
   if (!image.startsWith("https://")) {
     alert("La imagen debe ser una URL absoluta que inicie con https://");
@@ -44,4 +47,7 @@ form.addEventListener("submit", (event) => {
   a.click();
 
   result.hidden = false;
-});
+}
+
+export { fillPreview };
+// });
