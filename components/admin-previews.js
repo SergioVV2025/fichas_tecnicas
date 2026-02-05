@@ -1,9 +1,3 @@
-// const form = document.getElementById("previewForm");
-// const result = document.getElementById("result");
-
-// form.addEventListener("submit", (event) => {
-//   event.preventDefault();
-
 function fillPreview(previewData) {
   const id = previewData.id.trim();
   const title = previewData.title.trim();
@@ -50,4 +44,3 @@ function fillPreview(previewData) {
 }
 
 export { fillPreview };
-// });

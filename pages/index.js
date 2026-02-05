@@ -98,19 +98,11 @@ function recoverPropertyInfo(id) {
   const descriptionOG = document.querySelector(
     ".input__textarea-descriptionOG",
   );
-
-  const pattern = /[^,.;:\n\t]+/g;
-  const featuresArray = Properties[id].features.match(pattern);
-  let featuresText = "";
-  for (let features of featuresArray) {
-    featuresText += "- " + features + "\n";
-  }
-
   descriptionOG.value =
-    "\n" +
     Properties[id].price.toString() +
     "\n" +
-    featuresText +
+    Properties[id].features +
+    "\n" +
     Properties[id].comment;
 
   const imageOG = document.querySelector(".popup__input_type_imageOG");
@@ -126,17 +118,6 @@ function handlePreviewFormSubmit(formData) {
     imageOG: formData.imageOG,
     urlProject: formData.urlProject,
   };
-  alert(
-    previewData.id +
-      "\n" +
-      previewData.title +
-      "\n" +
-      previewData.descriptionOG +
-      "\n" +
-      previewData.imageOG +
-      "\n" +
-      previewData.urlProject,
-  );
   fillPreview(previewData);
 }
 
