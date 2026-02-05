@@ -201,6 +201,7 @@ body {
 
 .property__cta-button {
   display: block;
+  width: 95%;
   background-color: #25d366;
   color: #fff;
   text-decoration: none;
