@@ -100,9 +100,9 @@ function recoverPropertyInfo(id) {
   );
   descriptionOG.value =
     Properties[id].price.toString() +
-    "\n" +
+    "&#10;&#13;" +
     Properties[id].features +
-    "\n" +
+    "&#10;&#13;" +
     Properties[id].comment;
 
   const imageOG = document.querySelector(".popup__input_type_imageOG");
