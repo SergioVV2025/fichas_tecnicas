@@ -109,7 +109,6 @@ function recoverPropertyInfo(id) {
   imageOG.value = Properties[id].hero;
 }
 
-// const savePreviewForm = document.querySelector("#new-preview-form");
 function handlePreviewFormSubmit(formData) {
   const previewData = {
     id: formData.id,

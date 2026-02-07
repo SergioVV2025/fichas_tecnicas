@@ -144,7 +144,7 @@ body {
 /* GALERÍA */
 .property__gallery {
   position: relative;
-  width: 60%;
+  width: 75%;
   display: flex;
   margin: auto;
   margin-bottom: 1.5rem;
@@ -175,6 +175,10 @@ body {
   height: 5rem;
 }
 
+.image__btn_back {
+  width: 100%;
+}
+
 .property__image_btn-forward {
   position: absolute;
   top: 50%;
@@ -186,6 +190,10 @@ body {
   border-radius: 6px;
   width: 8%;
   height: 5rem;
+}
+
+.image__btn_fwd {
+  width: 100%;
 }
 
 .property__image_btn-back:hover,
@@ -201,7 +209,6 @@ body {
 
 .property__cta-button {
   display: block;
-  width: 95%;
   background-color: #25d366;
   color: #fff;
   text-decoration: none;
