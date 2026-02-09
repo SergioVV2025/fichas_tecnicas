@@ -110,7 +110,7 @@ previewInputId.addEventListener("change", () => {
 });
 
 function recoverPropertyInfo(id) {
-  const currentProperty = StorageService.getProperty(id);
+  const currentProperty = StorageService.getProperty(id - 1);
   // alert(currentProperty.title);
   const propertyTitle = document.querySelector(
     ".popup__input_type_property-title",
