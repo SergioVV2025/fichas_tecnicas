@@ -41,6 +41,7 @@ function fillPreview(previewData) {
   a.href = URL.createObjectURL(blob);
   a.download = `propiedad${id}_preview.html`;
   a.click();
+  StorageService.setMaxPublishedId(id);
 }
 
 export { fillPreview };

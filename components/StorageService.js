@@ -53,6 +53,15 @@ class StorageService {
       return 0;
     }
   }
+
+  static getMaxPublishedId() {
+    const published = localStorage.getItem("publishedMaxId");
+    return published ? Number(published) : 0;
+  }
+
+  static setMaxPublishedId(id) {
+    localStorage.setItem("publishedMaxId", Number(id));
+  }
 }
 
 export default StorageService;

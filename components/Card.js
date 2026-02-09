@@ -59,15 +59,25 @@ class Card {
     );
     cardWhatsappButton.addEventListener("click", (evt) => {
       evt.stopPropagation();
-      if (this._id !== 0) {
-        const previewUrl = `https://sergiovv2025.github.io/fichas_tecnicas/propiedad${this._id}_preview.html`;
+      const publishedMax = StorageService.getMaxPublishedId
+        ? StorageService.getMaxPublishedId()
+        : 2; // temporal mientras lo implementamos
 
-        const message = `Te comparto esta propiedad:\n${previewUrl}`;
-
-        const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-
-        window.open(whatsappUrl, "_blank");
+      if (Number(this._id) > publishedMax) {
+        alert(
+          "Esta propiedad aún no está publicada.\n\n" +
+            "Primero genera el preview y súbelo a GitHub para poder compartirla.",
+        );
+        return;
       }
+
+      const previewUrl = `https://sergiovv2025.github.io/fichas_tecnicas/propiedad${this._id}_preview.html`;
+
+      const message = `Te comparto esta propiedad:\n${previewUrl}`;
+
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappUrl, "_blank");
     });
 
     // const priceInput = document.forms["new-card-form"]["price"];
