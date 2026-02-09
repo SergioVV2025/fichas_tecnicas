@@ -61,20 +61,7 @@ function handleCardFormSubmit(formData) {
     features: formData.features,
     gallery: formData.gallery,
   };
-  const card = new Card(newProperty, "#card-template", handleCardClick);
-  // const card = new Card(
-  //   {
-  //     id: newId,
-  //     hero: formData.hero,
-  //     title: formData.title,
-  //     price: formData.price,
-  //     description: formData.description,
-  //     features: formData.features,
-  //     gallery: formData.gallery,
-  //   },
-  //   "#card-template",
-  //   handleCardClick,
-  // );
+
   const cardElement = card.generateCard();
   section.addItem(cardElement);
 

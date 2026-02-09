@@ -3,7 +3,7 @@ import StorageService from "../components/StorageService.js";
 function fillPreview(previewData) {
   const id = previewData.id.trim();
   const title = previewData.title.trim();
-  const description = previewData.description.trim();
+  const description = previewData.descriptionOG.trim();
   const image = previewData.imageOG.trim();
   const baseUrl = previewData.urlProject.trim();
   const price = previewData.price.trim();
