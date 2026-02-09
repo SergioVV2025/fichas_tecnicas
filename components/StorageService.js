@@ -3,6 +3,7 @@ class StorageService {
     const saved = localStorage.getItem("properties");
 
     if (saved) {
+      alert(saved + " - saved en getProperties");
       return JSON.parse(saved);
     }
     return defaultProperties;

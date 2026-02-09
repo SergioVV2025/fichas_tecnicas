@@ -10,6 +10,7 @@ const btnConfig = {
 
 const params = new URLSearchParams(window.location.search);
 const id = Number(params.get("id"));
+alert(Properties.length + " - length de Properties en propertyHandler");
 const result = StorageService.getProperties(Properties).find(
   (p) => p.id === id,
 );
