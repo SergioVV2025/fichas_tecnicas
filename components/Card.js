@@ -59,9 +59,7 @@ class Card {
     );
     cardWhatsappButton.addEventListener("click", (evt) => {
       evt.stopPropagation();
-      const publishedMax = StorageService.getMaxPublishedId
-        ? StorageService.getMaxPublishedId()
-        : 2; // temporal mientras lo implementamos
+      const publishedMax = StorageService.getMaxPublishedId();
 
       if (Number(this._id) > publishedMax) {
         alert(

@@ -40,10 +40,11 @@ function fillPreview(previewData) {
   const blob = new Blob([htmlContent], { type: "text/html" });
   const a = document.createElement("a");
 
+  StorageService.setMaxPublishedId(id);
+
   a.href = URL.createObjectURL(blob);
   a.download = `propiedad${id}_preview.html`;
   a.click();
-  StorageService.setMaxPublishedId(id);
 }
 
 export { fillPreview };
