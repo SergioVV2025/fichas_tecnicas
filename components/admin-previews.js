@@ -1,4 +1,4 @@
-import StorageService from "./StorageService.js";
+import StorageService from "../components/StorageService.js";
 
 function fillPreview(previewData) {
   const id = previewData.id.trim();
