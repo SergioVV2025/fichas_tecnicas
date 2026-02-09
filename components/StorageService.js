@@ -9,7 +9,7 @@ class StorageService {
   }
 
   static getProperty(id) {
-    alert(id);
+    alert(id + " - id en getProperty");
     const current = this.getProperties([]);
     return current.find((p) => Number(p.id) === Number(id));
   }

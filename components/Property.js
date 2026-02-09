@@ -11,7 +11,7 @@ class Property {
     this._btnForward = config.btnForward;
     this._selector = selector;
     this._i = 0;
-    alert(this._propertyId);
+    alert(this._propertyId + " - id en constructor de Property");
   }
 
   findId(id, Properties) {
