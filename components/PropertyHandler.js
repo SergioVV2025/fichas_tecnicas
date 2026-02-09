@@ -13,7 +13,7 @@ const id = Number(params.get("id"));
 const result = StorageService.getProperties(Properties).find(
   (p) => p.id === id,
 );
-
+alert(result + "- id = " + id);
 if (result) {
   property = new Property(
     StorageService.getProperty(id),
