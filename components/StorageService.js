@@ -1,11 +1,17 @@
 class StorageService {
   static getProperties(defaultProperties) {
     const saved = localStorage.getItem("properties");
+    alert(
+      saved
+        ? saved.length + " - saved.length en getProperties"
+        : "No hay propiedades guardadas",
+    );
 
     if (saved) {
       alert(saved + " - saved en getProperties");
       return JSON.parse(saved);
     }
+    alert(defaultProperties + " - defaultProperties en getProperties");
     return defaultProperties;
   }
 
