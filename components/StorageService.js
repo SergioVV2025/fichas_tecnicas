@@ -26,7 +26,7 @@ class StorageService {
   static deleteProperty(id) {
     const current = this.getProperties([]);
     if (current.length === 1) {
-      this.saveProperties([]);
+      localStorage.removeItem("properties");
       location.reload();
       return;
     } else {
