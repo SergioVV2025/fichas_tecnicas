@@ -106,11 +106,11 @@ const newPreviewForm = document.forms["new-preview-form"];
 const previewId = newPreviewForm.id;
 const previewInputId = document.querySelector(".popup__input_type_property-id");
 previewInputId.addEventListener("change", () => {
-  recoverPropertyInfo(previewId.value - 1);
+  recoverPropertyInfo(previewId.value);
 });
 
 function recoverPropertyInfo(id) {
-  const currentProperty = StorageService.getProperty(id - 1);
+  const currentProperty = StorageService.getProperty(id);
   // alert(currentProperty.title);
   const propertyTitle = document.querySelector(
     ".popup__input_type_property-title",
