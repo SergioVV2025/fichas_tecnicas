@@ -60,7 +60,7 @@ class Card {
     cardWhatsappButton.addEventListener("click", (evt) => {
       evt.stopPropagation();
       if (this._id !== 0) {
-        const previewUrl = `https://sergiovv2025.github.io/fichas__tecnicas/propiedad${this._id}_preview.html`;
+        const previewUrl = `https://sergiovv2025.github.io/fichas_tecnicas/propiedad${this._id}_preview.html`;
 
         const message = `Te comparto esta propiedad:\n${previewUrl}`;
 

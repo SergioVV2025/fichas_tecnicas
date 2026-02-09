@@ -128,11 +128,11 @@ function recoverPropertyInfo(id) {
 
   const imageOG = document.querySelector(".popup__input_type_imageOG");
   imageOG.value =
-    "https://sergiovv2025.github.io/fichas__tecnicas/" +
+    "https://sergiovv2025.github.io/fichas_tecnicas/" +
     currentProperty.hero.slice(2);
 
   const urlProject = document.querySelector(".popup__input_type_urlProject");
-  urlProject.value = "https://sergiovv2025.github.io/fichas__tecnicas/";
+  urlProject.value = "https://sergiovv2025.github.io/fichas_tecnicas/";
 }
 
 function handlePreviewFormSubmit(formData) {
