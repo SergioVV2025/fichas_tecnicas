@@ -11,7 +11,7 @@ class StorageService {
       alert(saved + " - saved en getProperties");
       return JSON.parse(saved);
     }
-    alert(defaultProperties + " - defaultProperties en getProperties");
+    alert(defaultProperties + " - defaultProperties en getProperties1");
     return defaultProperties;
   }
 
