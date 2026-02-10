@@ -227,6 +227,35 @@
               type="text"
               minlength="2"
             />
+            <!-- <label class="input__label">Precio</label> -->
+            <input
+              class="popup__input popup__input_type_preview-price"
+              name="price"
+              placeholder="Precio (ej: 2500)"
+              required
+              type="text"
+              minlength="2"
+            />
+            <span class="popup__error popup__error_price"></span>
+            <!-- <label class="input__label">Features</label> -->
+            <textarea
+              class="popup__input popup__textarea popup__input_type_preview-features"
+              name="features"
+              placeholder="Características separadas por comas o una por renglón."
+              required
+              minlength="2"
+            ></textarea>
+            <span class="popup__error popup__error_features"></span>
+            <!-- <label class="input__label">Image Gallery</label> -->
+            <textarea
+              class="popup__input popup__textarea popup__input_type_preview-gallery"
+              name="gallery"
+              placeholder="URLs de imágenes, una por renglón"
+              required
+              minlength="2"
+            ></textarea>
+            <span class="popup__error popup__error_gallery"></span>
+
             <span class="popup__error popup__error_urlProject"></span>
             <button class="button popup__button" type="submit" disabled>
               Crear

@@ -62,6 +62,7 @@ function handleCardFormSubmit(formData) {
     gallery: formData.gallery,
   };
 
+  const card = new Card(newProperty, "#card-template", handleCardClick);
   const cardElement = card.generateCard();
   section.addItem(cardElement);
 
@@ -80,12 +81,13 @@ function handleCardFormSubmit(formData) {
 
 const newPreview = document.querySelector(".nav__list-link__preview");
 newPreview.addEventListener("click", () => {
-  // window.open("./admin-previews.html", "_blank");
   const previewIdMax = document.querySelector(".popup__input_type_property-id");
   const max = StorageService.getMaxId();
   if (max !== 0) {
     previewIdMax.setAttribute("max", max);
     newPreviewPopup.open();
+  } else {
+    alert("No hay propiedades registradas!");
   }
 });
 
@@ -98,29 +100,83 @@ previewInputId.addEventListener("change", () => {
 
 function recoverPropertyInfo(id) {
   const currentProperty = StorageService.getProperty(id);
-  // alert(currentProperty.title);
-  const propertyTitle = document.querySelector(
-    ".popup__input_type_property-title",
-  );
-  propertyTitle.value = currentProperty.title;
-  const descriptionOG = document.querySelector(
-    ".input__textarea-descriptionOG",
-  );
-  descriptionOG.value =
-    currentProperty.price.toString() +
-    "\t" +
-    currentProperty.features +
-    "\t" +
+
+  if (!currentProperty) {
+    alert("No se encontró información para ese ID");
+    return;
+  }
+
+  const BASE_URL = "https://sergiovv2025.github.io/fichas_tecnicas/";
+
+  document.querySelector(".popup__input_type_property-title").value =
+    currentProperty.title;
+
+  document.querySelector(".input__textarea-descriptionOG").value =
     currentProperty.description;
 
-  const imageOG = document.querySelector(".popup__input_type_imageOG");
-  imageOG.value =
-    "https://sergiovv2025.github.io/fichas_tecnicas/" +
-    currentProperty.hero.slice(2);
+  const heroPath = currentProperty.hero || "";
+  document.querySelector(".popup__input_type_imageOG").value =
+    BASE_URL + (heroPath.startsWith("./") ? heroPath.slice(2) : heroPath);
 
-  const urlProject = document.querySelector(".popup__input_type_urlProject");
-  urlProject.value = "https://sergiovv2025.github.io/fichas_tecnicas/";
+  document.querySelector(".popup__input_type_urlProject").value = BASE_URL;
+
+  document.querySelector(".popup__input_type_preview-price").value =
+    currentProperty.price;
+
+  document.querySelector(".popup__input_type_preview-features").value =
+    Array.isArray(currentProperty.features)
+      ? currentProperty.features.join("\n")
+      : currentProperty.features;
+
+  document.querySelector(".popup__input_type_preview-gallery").value =
+    Array.isArray(currentProperty.gallery)
+      ? currentProperty.gallery.join("\n")
+      : "";
 }
+
+// function recoverPropertyInfo(id) {
+//   const currentProperty = StorageService.getProperty(id);
+
+//   if (!currentProperty) {
+//     alert("No se encontró información para ese ID");
+//     return;
+//   }
+
+//   const propertyTitle = document.querySelector(
+//     ".popup__input_type_property-title",
+//   );
+//   propertyTitle.value = currentProperty.title;
+//   const descriptionOG = document.querySelector(
+//     ".input__textarea-descriptionOG",
+//   );
+//   descriptionOG.value = currentProperty.description;
+
+//   const imageOG = document.querySelector(".popup__input_type_imageOG");
+//   const heroPath = currentProperty.hero || "";
+//   imageOG.value =
+//     "https://sergiovv2025.github.io/fichas_tecnicas/" +
+//     (heroPath.startsWith("./") ? heroPath.slice(2) : heroPath);
+
+//   const urlProject = document.querySelector(".popup__input_type_urlProject");
+//   urlProject.value = "https://sergiovv2025.github.io/fichas_tecnicas/";
+
+//   const previewPrice = document.querySelector(
+//     ".popup__input_type_preview-price",
+//   );
+//   previewPrice.value = currentProperty.price;
+
+//   const previewFeatures = document.querySelector(
+//     ".popup__input_type_preview-features",
+//   );
+//   previewFeatures.value = Array.isArray(currentProperty.features)
+//     ? currentProperty.features.join("\n")
+//     : currentProperty.features;
+
+//   const previewGallery = document.querySelector(
+//     ".popup__input_type_preview-gallery",
+//   );
+//   previewGallery.value = currentProperty.gallery.join("\n");
+// }
 
 function handlePreviewFormSubmit(formData) {
   const previewData = {
@@ -129,6 +185,9 @@ function handlePreviewFormSubmit(formData) {
     descriptionOG: formData.descriptionOG,
     imageOG: formData.imageOG,
     urlProject: formData.urlProject,
+    price: formData.price,
+    features: formData.features,
+    gallery: formData.gallery,
   };
   fillPreview(previewData);
   newPreviewPopup.close();

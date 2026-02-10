@@ -7,7 +7,17 @@ function fillPreview(previewData) {
   const image = previewData.imageOG.trim();
   const baseUrl = previewData.urlProject.trim();
   const price = previewData.price.trim();
-  const features = previewData.features.trim();
+
+  // Features puede venir como string o como array
+  let featuresRaw = previewData.features;
+  let featuresList = [];
+
+  if (Array.isArray(featuresRaw)) {
+    featuresList = featuresRaw;
+  } else if (typeof featuresRaw === "string") {
+    featuresList = featuresRaw.split(/[,.;:\n]/);
+  }
+
   const gallery = previewData.gallery || [];
 
   if (!image.startsWith("https://")) {
@@ -20,11 +30,10 @@ function fillPreview(previewData) {
     return;
   }
 
-  // 👇 CAMBIO CLAVE: ahora el preview vive dentro de /previews/
+  // Ahora el preview vive dentro de /previews/
   const previewUrl = `${baseUrl}previews/propiedad${id}_preview.html`;
 
-  const featuresHtml = features
-    .split(/[,.;:\n]/)
+  const featuresHtml = featuresList
     .map((f) => `<li class="property__feature">${f.trim()}</li>`)
     .join("");
 
@@ -42,7 +51,6 @@ function fillPreview(previewData) {
 
 <title>${title}</title>
 
-<!-- 👇 RUTA AJUSTADA porque ahora estamos dentro de /previews/ -->
 <link rel="stylesheet" href="../blocks/property.css" />
 
 <meta property="og:title" content="${title}" />
@@ -100,8 +108,7 @@ function fillPreview(previewData) {
 
   a.href = URL.createObjectURL(blob);
 
-  // El archivo se descarga con el mismo nombre,
-  // tú solo lo subes dentro de /previews/
+  // Se descarga para que tú lo subas a /previews/
   a.download = `propiedad${id}_preview.html`;
   a.click();
 }

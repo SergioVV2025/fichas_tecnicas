@@ -57,14 +57,16 @@ class Card {
     const cardWhatsappButton = this._cardElement.querySelector(
       ".card__whatsapp-button",
     );
+
     cardWhatsappButton.addEventListener("click", (evt) => {
       evt.stopPropagation();
+
       const publishedMax = StorageService.getMaxPublishedId();
 
       if (Number(this._id) > publishedMax) {
         alert(
           "Esta propiedad aún no está publicada.\n\n" +
-            "Primero genera el preview y súbelo a GitHub para poder compartirla.",
+            "Debes generar el preview y subirlo a GitHub dentro de la carpeta /previews para poder compartirla.",
         );
         return;
       }

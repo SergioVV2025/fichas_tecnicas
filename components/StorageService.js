@@ -1,24 +1,15 @@
 class StorageService {
   static getProperties(defaultProperties) {
     const saved = localStorage.getItem("properties");
-    alert(
-      saved
-        ? saved.length + " - saved.length en getProperties"
-        : "No hay propiedades guardadas",
-    );
-
     if (saved) {
-      alert(saved + " - saved en getProperties");
       return JSON.parse(saved);
     }
-    alert(" - defaultProperties en getProperties");
     return defaultProperties;
   }
 
   static getProperty(id) {
-    alert(id + " - id en getProperty");
     const current = this.getProperties([]);
-    return current.find((p) => Number(p.id) === Number(id));
+    return current.find((p) => Number(p.id) === Number(id)) || null;
   }
 
   static saveProperties(properties) {
@@ -53,22 +44,23 @@ class StorageService {
 
   static getMaxId() {
     const properties = this.getProperties([]);
-    if (properties.length !== 0) {
-      const maxId = Math.max(...properties.map((p) => Number(p.id)));
-      return maxId;
-    } else {
-      alert("No hay propiedades registradas!");
-      return 0;
-    }
+    return properties.length
+      ? Math.max(...properties.map((p) => Number(p.id)))
+      : 0;
   }
 
   static getMaxPublishedId() {
     const published = localStorage.getItem("publishedMaxId");
-    return published ? Number(published) : 0;
+
+    if (!published) return 0;
+
+    const num = Number(published);
+
+    return isNaN(num) ? 0 : num;
   }
 
   static setMaxPublishedId(id) {
-    localStorage.setItem("publishedMaxId", Number(id));
+    localStorage.setItem("publishedMaxId", String(id));
   }
 }
 
