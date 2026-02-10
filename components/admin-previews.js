@@ -40,7 +40,8 @@ function fillPreview(previewData) {
   let galleryHtml = "";
 
   gallery.forEach((img) => {
-    galleryHtml += `<img class="property__gallery-image" src=".${img}" alt="${title}" />`;
+    const fixedPath = img.replace("./images", "../images");
+    galleryHtml += `<img class="property__gallery-image" src="${fixedPath}" alt="${title}" />`;
   });
 
   const htmlContent = `<!doctype html>
