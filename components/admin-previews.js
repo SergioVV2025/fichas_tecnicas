@@ -43,7 +43,7 @@ function fillPreview(previewData) {
     const absolutePath =
       "https://sergiovv2025.github.io/fichas_tecnicas/" + img.slice(2);
 
-    galleryHtml += `<img class="property__gallery-image" src="${absolutePath}" alt="${title}" />`;
+    galleryHtml += `<img class="property__gallery-image" src="${absolutePath}" alt="${img}" />`;
   });
 
   const htmlContent = `<!doctype html>
@@ -70,7 +70,7 @@ function fillPreview(previewData) {
     <section class="property__content">
 
       <div>
-        <img class="property__hero-image" src="${image}" alt="${title}" />
+        <img class="property__hero-image" src="${image}" alt="${image}" />
       </div>
 
       <div>
