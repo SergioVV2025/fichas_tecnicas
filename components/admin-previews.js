@@ -40,8 +40,10 @@ function fillPreview(previewData) {
   let galleryHtml = "";
 
   gallery.forEach((img) => {
-    const fixedPath = img.replace("./images", "../images");
-    galleryHtml += `<img class="property__gallery-image" src="${fixedPath}" alt="${title}" />`;
+    const absolutePath =
+      "https://sergiovv2025.github.io/fichas_tecnicas/" + img.slice(2);
+
+    galleryHtml += `<img class="property__gallery-image" src="${absolutePath}" alt="${title}" />`;
   });
 
   const htmlContent = `<!doctype html>
@@ -109,7 +111,6 @@ function fillPreview(previewData) {
 
   a.href = URL.createObjectURL(blob);
 
-  // Se descarga para que tú lo subas a /previews/
   a.download = `propiedad${id}_preview.html`;
   a.click();
 }
