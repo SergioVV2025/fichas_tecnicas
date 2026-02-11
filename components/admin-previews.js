@@ -65,7 +65,7 @@ function fillPreview(previewData) {
 
 </head>
 
-<body class="${theme}">
+<body>
   <main class="property">
 
     <section class="property__content">
