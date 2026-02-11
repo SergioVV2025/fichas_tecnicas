@@ -1,6 +1,8 @@
 import StorageService from "../components/StorageService.js";
 
 function fillPreview(previewData) {
+  const now = new Date.now();
+  alert(now);
   const theme = previewData.theme.trim() || "theme-classic";
   const id = previewData.id.trim();
   const title = previewData.title.trim();
@@ -32,7 +34,7 @@ function fillPreview(previewData) {
   }
 
   // Ahora el preview vive dentro de /previews/
-  const previewUrl = `${baseUrl}previews/propiedad${id}_preview.html`;
+  const previewUrl = `${baseUrl}previews/propiedad${id}_${now}_preview.html`;
 
   const featuresHtml = featuresList
     .map((f) => `<li class="property__feature">${f.trim()}</li>`)
