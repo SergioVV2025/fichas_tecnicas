@@ -180,7 +180,7 @@ function recoverPropertyInfo(id) {
 
 function handlePreviewFormSubmit(formData) {
   const previewData = {
-    // theme: formData.theme,
+    theme: formData.theme,
     id: formData.id,
     title: formData.title,
     descriptionOG: formData.descriptionOG,
@@ -190,7 +190,6 @@ function handlePreviewFormSubmit(formData) {
     features: formData.features,
     gallery: formData.gallery,
   };
-  alert(previewData.features + "  ----  " + typeof previewData.features);
   fillPreview(previewData);
   newPreviewPopup.close();
 }
