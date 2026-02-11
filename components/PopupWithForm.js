@@ -17,6 +17,7 @@ class PopupWithForm extends Popup {
         const galleryArray = input.value.match(pattern);
         formData[input.name] = galleryArray;
       } else {
+        alert(input.name + ": " + input.value);
         formData[input.name] = input.value;
       }
     });
