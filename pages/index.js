@@ -188,6 +188,7 @@ function handlePreviewFormSubmit(formData) {
     price: formData.price,
     features: formData.features,
     gallery: formData.gallery,
+    theme: formData.theme,
   };
   fillPreview(previewData);
   newPreviewPopup.close();

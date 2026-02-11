@@ -7,6 +7,7 @@ function fillPreview(previewData) {
   const image = previewData.imageOG.trim();
   const baseUrl = previewData.urlProject.trim();
   const price = previewData.price.trim();
+  const theme = previewData.theme || "theme-classic";
 
   // Features puede venir como string o como array
   let featuresRaw = previewData.features;
@@ -64,7 +65,7 @@ function fillPreview(previewData) {
 
 </head>
 
-<body>
+<body class="${theme}">
   <main class="property">
 
     <section class="property__content">
