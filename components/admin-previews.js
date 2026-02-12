@@ -1,7 +1,7 @@
 import StorageService from "../components/StorageService.js";
 
 function fillPreview(previewData) {
-  const theme = previewData.theme.trim() || "theme-classic";
+  // const theme = previewData.theme.trim() || "theme-classic";
   const id = previewData.id.trim();
   const title = previewData.title.trim();
   const description = previewData.descriptionOG.trim();
@@ -65,7 +65,7 @@ function fillPreview(previewData) {
 
 </head>
 
-<body class="${theme}">
+<body>
   <main class="property">
 
     <section class="property__content">
