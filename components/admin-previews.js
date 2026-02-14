@@ -8,6 +8,11 @@ function fillPreview(previewData) {
   const image = previewData.imageOG.trim();
   const baseUrl = previewData.urlProject.trim();
   const price = previewData.price.trim();
+  const date = new Date();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const second = date.getSeconds();
+  const fullTime = `${hour}:${minute}:${second}`;
 
   // Features puede venir como string o como array
   let featuresRaw = previewData.features;
@@ -112,7 +117,7 @@ function fillPreview(previewData) {
 
   a.href = URL.createObjectURL(blob);
 
-  a.download = `propiedad${id}_preview.html`;
+  a.download = `propiedad${id}_preview_${fullTime}.html`;
   a.click();
 }
 
