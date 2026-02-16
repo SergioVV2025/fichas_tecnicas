@@ -8,11 +8,8 @@ function fillPreview(previewData) {
   const image = previewData.imageOG.trim();
   const baseUrl = previewData.urlProject.trim();
   const price = previewData.price.trim();
-  const date = new Date();
-  const hour = date.getHours();
-  const minute = date.getMinutes();
-  const second = date.getSeconds();
-  const fullTime = `${hour}:${minute}:${second}`;
+  const time = previewData.time.trim();
+  let i = 0;
 
   // Features puede venir como string o como array
   let featuresRaw = previewData.features;
@@ -37,19 +34,15 @@ function fillPreview(previewData) {
   }
 
   // Ahora el preview vive dentro de /previews/
-  const previewUrl = `${baseUrl}previews/propiedad${id}_preview.html`;
+  const previewUrl = `${baseUrl}previews/propiedad${id}_preview${time}.html`;
 
   const featuresHtml = featuresList
     .map((f) => `<li class="property__feature">${f.trim()}</li>`)
     .join("");
 
-  let galleryHtml = "";
-
-  gallery.forEach((img) => {
-    const absolutePath =
-      "https://sergiovv2025.github.io/fichas_tecnicas/" + img.slice(2);
-
-    galleryHtml += `<img class="property__gallery-image" src="${absolutePath}" alt="${img}" />`;
+  const absoluteGallery = gallery.map((img) => {
+    const absolutePath = baseUrl + img.slice(2);
+    return absolutePath;
   });
 
   const htmlContent = `<!doctype html>
@@ -94,8 +87,14 @@ function fillPreview(previewData) {
         <p class="property__description">${description}</p>
       </div>
 
-      <div class="property__gallery">
-        ${galleryHtml}
+      <div class="property__image_gallery">
+        <img class="property__image" src="${absoluteGallery[0]}" alt="${absoluteGallery[0]}">
+        <button class="property__btn left" id="btnBack">
+          <img class="property__btn_image" src="${baseUrl}images/arrow_back.png" alt="Left arrow">
+        </button>
+        <button class="property__btn right" id="btnForward">
+          <img class="property__btn_image" src="${baseUrl}images/arrow_forward.png" alt="Right arrow">
+        </button>
       </div>
 
       <div class="property__cta">
@@ -117,7 +116,7 @@ function fillPreview(previewData) {
 
   a.href = URL.createObjectURL(blob);
 
-  a.download = `propiedad${id}_preview_${fullTime}.html`;
+  a.download = `propiedad${id}_preview${time}.html`;
   a.click();
 }
 

@@ -9,7 +9,19 @@ class PopupWithForm extends Popup {
     this._form = this._popup.querySelector(".popup__form");
   }
 
+  _setcCardTime() {
+    const date = new Date();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    const second = date.getSeconds();
+    const fullTime = `${hour}${minute}${second}`;
+    this._popup.querySelector(".popup__input_type_card-time").value = fullTime;
+  }
+
   _getInputValues() {
+    if (this._popup.querySelector(".popup__form").id === "new-card-form") {
+      this._setcCardTime();
+    }
     const formData = {};
     this._inputList.forEach((input) => {
       if (input.name === "gallery") {

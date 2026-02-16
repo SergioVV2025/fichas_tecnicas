@@ -9,6 +9,7 @@ class Card {
     this._description = data.description;
     this._features = data.features;
     this._gallery = data.gallery;
+    this._time = data.time;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._isLiked = false;
@@ -33,7 +34,7 @@ class Card {
     const cardImage = this._cardElement.querySelector(".card__image");
     cardImage.addEventListener("click", () => {
       if (this._id !== 0) {
-        this._handleCardClick(this._id);
+        this._handleCardClick(this._id, this._time);
       }
     });
 
@@ -71,7 +72,7 @@ class Card {
         return;
       }
 
-      const previewUrl = `https://sergiovv2025.github.io/fichas_tecnicas/previews/propiedad${this._id}_preview.html`;
+      const previewUrl = `https://sergiovv2025.github.io/fichas_tecnicas/previews/propiedad${this._id}_preview${this._time}.html`;
 
       const message = `Te comparto esta propiedad:\n${previewUrl}`;
 

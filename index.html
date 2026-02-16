@@ -160,6 +160,13 @@
               minlength="2"
             ></textarea>
             <span class="popup__error popup__error_gallery"></span>
+            <!-- <label class="input__label">Galería</label> -->
+            <input
+              class="popup__input popup__input_type_card-time"
+              name="time"
+              required
+              type="hidden"
+            />
             <button class="button popup__button" type="submit" disabled>
               Crear
             </button>
@@ -248,6 +255,7 @@
               type="text"
               minlength="2"
             />
+            <span class="popup__error popup__error_urlProject"></span>
             <!-- <label class="input__label">Precio</label> -->
             <input
               class="popup__input popup__input_type_preview-price"
@@ -276,8 +284,16 @@
               minlength="2"
             ></textarea>
             <span class="popup__error popup__error_gallery"></span>
-
-            <span class="popup__error popup__error_urlProject"></span>
+            <!-- <label class="input__label">Time</label> -->
+            <input
+              class="popup__input popup__input_type_preview-time"
+              name="time"
+              placeholder="Hora de creación (ej: 123456)"
+              required
+              type="text"
+              minlength="2"
+            />
+            <span class="popup__error popup__error_time"></span>
             <button class="button popup__button" type="submit" disabled>
               Crear
             </button>
