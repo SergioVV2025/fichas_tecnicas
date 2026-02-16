@@ -24,7 +24,7 @@ const propertiesData = StorageService.getProperties(Properties);
 /*---------- Initial Properties en properties.js ----------*/
 
 function renderCard(item) {
-  const newCard = new Card(item, "#card-template", handleCardClick);
+  const newCard = new Card(item, "#card-template" /*, handleCardClick*/);
   const cardElement = newCard.generateCard();
 
   return cardElement;
@@ -62,7 +62,7 @@ function handleCardFormSubmit(formData) {
     time: formData.time,
   };
 
-  const card = new Card(newProperty, "#card-template", handleCardClick);
+  const card = new Card(newProperty, "#card-template" /*, handleCardClick*/);
   const cardElement = card.generateCard();
   section.addItem(cardElement);
 

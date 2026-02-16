@@ -1,7 +1,7 @@
 import StorageService from "./StorageService.js";
 
 class Card {
-  constructor(data, cardSelector, handleCardClick) {
+  constructor(data, cardSelector /*handleCardClick*/) {
     this._id = data.id;
     this._hero = data.hero;
     this._title = data.title;
