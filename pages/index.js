@@ -24,7 +24,9 @@ const propertiesData = StorageService.getProperties(Properties);
 /*---------- Initial Properties en properties.js ----------*/
 
 function renderCard(item) {
-  const newCard = new Card(item, "#card-template" /*, handleCardClick*/);
+  // const newCard = new Card(item, "#card-template", handleCardClick);
+  const newCard = new Card(item, "#card-template");
+
   const cardElement = newCard.generateCard();
 
   return cardElement;
