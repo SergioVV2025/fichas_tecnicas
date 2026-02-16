@@ -18,6 +18,7 @@ class PopupWithForm extends Popup {
     const second = date.getSeconds();
     second < 10 ? "0" + second : second;
     const fullTime = `${hour}${minute}${second}`;
+    alert(fullTime);
     this._popup.querySelector(".popup__input_type_card-time").value = fullTime;
   }
 
