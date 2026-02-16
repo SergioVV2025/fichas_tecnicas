@@ -31,12 +31,12 @@ class Card {
   }
 
   _setEventListeners() {
-    const cardImage = this._cardElement.querySelector(".card__image");
-    cardImage.addEventListener("click", () => {
-      if (this._id !== 0) {
-        this._handleCardClick(this._id, this._time);
-      }
-    });
+    // const cardImage = this._cardElement.querySelector(".card__image");
+    // cardImage.addEventListener("click", () => {
+    //   if (this._id !== 0) {
+    //     this._handleCardClick(this._id, this._time);
+    //   }
+    // });
 
     const cardLikeButton =
       this._cardElement.querySelector(".card__like-button");
