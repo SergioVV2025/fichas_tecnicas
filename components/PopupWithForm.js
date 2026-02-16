@@ -9,7 +9,7 @@ class PopupWithForm extends Popup {
     this._form = this._popup.querySelector(".popup__form");
   }
 
-  _setcCardTime() {
+  _setCardTime() {
     const date = new Date();
     const hour = date.getHours();
     hour < 10 ? "0" + hour : hour;
@@ -23,7 +23,7 @@ class PopupWithForm extends Popup {
 
   _getInputValues() {
     if (this._popup.querySelector(".popup__form").id === "new-card-form") {
-      this._setcCardTime();
+      this._setCardTime();
     }
     const formData = {};
     this._inputList.forEach((input) => {

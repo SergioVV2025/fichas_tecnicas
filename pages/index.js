@@ -17,9 +17,9 @@ const propertiesData = StorageService.getProperties(Properties);
 
 /*---------- Función callback para manejar el click en la imagen de la tarjeta ----------*/
 
-const handleCardClick = (id, time) => {
-  window.open(`./previews/propiedad${id}_preview${time}.html`, "_blank");
-};
+// const handleCardClick = (id, time) => {
+//   window.open(`./previews/propiedad${id}_preview${time}.html`, "_blank");
+// };
 
 /*---------- Initial Properties en properties.js ----------*/
 

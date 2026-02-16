@@ -11,7 +11,7 @@ class Card {
     this._gallery = data.gallery;
     this._time = data.time;
     this._cardSelector = cardSelector;
-    this._handleCardClick = handleCardClick;
+    // this._handleCardClick = handleCardClick;
     this._isLiked = false;
   }
 
