@@ -3,6 +3,7 @@
   padding: 15px 0 36px;
   position: relative;
   top: 6vh;
+  z-index: 0;
 }
 
 .cards__list {
