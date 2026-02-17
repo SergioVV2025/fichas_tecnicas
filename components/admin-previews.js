@@ -69,7 +69,7 @@ function fillPreview(previewData) {
     <section class="property__content">
 
       <div>
-        <img class="property__hero-image" src="${image}" alt="${image}" />
+        <img class="property__hero-image" src="${image}" alt="${title}" />
       </div>
 
       <div>
@@ -88,7 +88,7 @@ function fillPreview(previewData) {
       </div>
 
       <div class="property__image_gallery">
-        <img class="property__image" src="${absoluteGallery[0]}" alt="${absoluteGallery[0]}">
+        <img class="property__image" src="${absoluteGallery[0]}" alt="${title}">
         <button class="property__btn left" id="btnBack">
           <img class="property__btn_image" src="${baseUrl}images/arrow_back.png" alt="Left arrow">
         </button>
@@ -98,7 +98,7 @@ function fillPreview(previewData) {
       </div>
 
       <div class="property__cta">
-        <a class="property__cta-button" href="https://wa.me/521XXXXXXXXXX">
+        <a class="property__cta-button" href="https://wa.me/5215552178925">
           Contactar por WhatsApp
         </a>
       </div>
@@ -106,6 +106,28 @@ function fillPreview(previewData) {
     </section>
 
   </main>
+  <script>
+  (function () {
+    const images = ${JSON.stringify(absoluteGallery)};
+    let index = 0;
+
+    const imgEl = document.querySelector(".property__image");
+    const btnBack = document.getElementById("btnBack");
+    const btnForward = document.getElementById("btnForward");
+
+    if (!imgEl || !btnBack || !btnForward || images.length === 0) return;
+
+    btnForward.addEventListener("click", () => {
+      index = (index + 1) % images.length;
+      imgEl.src = images[index];
+    });
+
+    btnBack.addEventListener("click", () => {
+      index = (index - 1 + images.length) % images.length;
+      imgEl.src = images[index];
+    });
+  })();
+</script>
 </body>
 </html>`;
 
