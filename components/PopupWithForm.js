@@ -13,10 +13,13 @@ class PopupWithForm extends Popup {
     const date = new Date();
     const hour = date.getHours();
     hour < 10 ? "0" + hour : hour;
+    alert(hour);
     const minute = date.getMinutes();
     minute < 10 ? "0" + minute : minute;
+    alert(minute);
     const second = date.getSeconds();
     second < 10 ? "0" + second : second;
+    alert(second);
     const fullTime = `${hour}${minute}${second}`;
     alert(fullTime);
     this._popup.querySelector(".popup__input_type_card-time").value = fullTime;
