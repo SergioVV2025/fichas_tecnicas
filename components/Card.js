@@ -1,7 +1,7 @@
 import StorageService from "./StorageService.js";
 
 class Card {
-  constructor(data, cardSelector /*handleCardClick*/) {
+  constructor(data, cardSelector, handleCardClick) {
     this._id = data.id;
     this._hero = data.hero;
     this._title = data.title;
@@ -11,7 +11,7 @@ class Card {
     this._gallery = data.gallery;
     this._time = data.time;
     this._cardSelector = cardSelector;
-    // this._handleCardClick = handleCardClick;
+    this._handleCardClick = handleCardClick;
     this._isLiked = false;
     alert(this._time + " - entro al constructor");
   }
@@ -32,12 +32,12 @@ class Card {
   }
 
   _setEventListeners() {
-    // const cardImage = this._cardElement.querySelector(".card__image");
-    // cardImage.addEventListener("click", () => {
-    //   if (this._id !== 0) {
-    //     this._handleCardClick(this._id, this._time);
-    //   }
-    // });
+    const cardImage = this._cardElement.querySelector(".card__image");
+    cardImage.addEventListener("click", () => {
+      if (this._id !== 0) {
+        this._handleCardClick(this._id, this._time);
+      }
+    });
 
     const cardLikeButton =
       this._cardElement.querySelector(".card__like-button");

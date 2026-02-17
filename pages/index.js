@@ -17,15 +17,26 @@ const propertiesData = StorageService.getProperties(Properties);
 
 /*---------- Función callback para manejar el click en la imagen de la tarjeta ----------*/
 
-// const handleCardClick = (id, time) => {
-//   window.open(`./previews/propiedad${id}_preview${time}.html`, "_blank");
-// };
+const handleCardClick = (id, time) => {
+  const publishedMax = StorageService.getMaxPublishedId();
+
+  if (Number(id) > publishedMax) {
+    alert(
+      "Esta propiedad aún no está publicada.\n\n" +
+        "Debes generar el preview y subirlo a GitHub dentro de la carpeta /previews para poder compartirla.",
+    );
+    return;
+  } else {
+    window.open(`./previews/propiedad${id}${time}_preview.html`, "_blank");
+    // window.open(`https://sergiovv2025.github.io/fichas_tecnicas/previews/propiedad${id}${time}_preview.html`, "_blank");
+  }
+};
 
 /*---------- Initial Properties en properties.js ----------*/
 
 function renderCard(item) {
-  // const newCard = new Card(item, "#card-template", handleCardClick);
-  const newCard = new Card(item, "#card-template");
+  const newCard = new Card(item, "#card-template", handleCardClick);
+  // const newCard = new Card(item, "#card-template");
 
   const cardElement = newCard.generateCard();
 
@@ -64,7 +75,7 @@ function handleCardFormSubmit(formData) {
     time: formData.time,
   };
 
-  const card = new Card(newProperty, "#card-template" /*, handleCardClick*/);
+  const card = new Card(newProperty, "#card-template", handleCardClick);
   const cardElement = card.generateCard();
   section.addItem(cardElement);
 
