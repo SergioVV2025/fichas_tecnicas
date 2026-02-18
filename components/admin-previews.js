@@ -89,6 +89,9 @@ function fillPreview(previewData) {
 
       <div class="property__image_gallery">
         <img class="property__image" src="${absoluteGallery[0]}" alt="${title}">
+        <div class="property__counter" id="imageCounter">
+          1 / 1
+        </div>
         <button class="property__btn left" id="btnBack">
           <img class="property__btn_image" src="${baseUrl}images/arrow_back.png" alt="Left arrow">
         </button>
@@ -106,28 +109,42 @@ function fillPreview(previewData) {
     </section>
 
   </main>
-  <script>
+<script>
   (function () {
     const images = ${JSON.stringify(absoluteGallery)};
-    let index = 0;
+    let currentIndex = 0;
 
-    const imgEl = document.querySelector(".property__image");
+    const img = document.querySelector(".property__image");
     const btnBack = document.getElementById("btnBack");
     const btnForward = document.getElementById("btnForward");
+    const counter = document.getElementById("imageCounter");
 
-    if (!imgEl || !btnBack || !btnForward || images.length === 0) return;
+    if (!img || !btnBack || !btnForward || images.length === 0) return;
+
+    function updateSlider() {
+      img.src = images[currentIndex];
+
+      if (counter) {
+        counter.textContent = (currentIndex + 1) + " / " + images.length;
+      }
+    }
+
+    // 🔹 render inicial
+    updateSlider();
 
     btnForward.addEventListener("click", () => {
-      index = (index + 1) % images.length;
-      imgEl.src = images[index];
+      currentIndex = (currentIndex + 1) % images.length;
+      updateSlider();
     });
 
     btnBack.addEventListener("click", () => {
-      index = (index - 1 + images.length) % images.length;
-      imgEl.src = images[index];
+      currentIndex =
+        (currentIndex - 1 + images.length) % images.length;
+      updateSlider();
     });
   })();
 </script>
+
 </body>
 </html>`;
 
