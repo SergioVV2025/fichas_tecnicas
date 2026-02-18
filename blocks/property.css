@@ -191,6 +191,11 @@ body {
   height: 3.5rem;
 }
 
+.property__counter {
+  margin: auto;
+  font-size: 0.9rem;
+}
+
 /* CTA */
 .property__cta {
   text-align: center;
