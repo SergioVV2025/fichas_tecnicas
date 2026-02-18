@@ -188,7 +188,7 @@ body {
 
 .property__btn_image {
   width: 50%;
-  height: 3.5rem;
+  height: auto;
 }
 
 .property__counter {
