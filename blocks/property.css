@@ -253,7 +253,7 @@ body {
 }
 
 /* Modern */
-.theme-modern body {
+.theme-modern {
   background: #eef2f7;
 }
 
@@ -271,7 +271,7 @@ body {
 }
 
 /* Rock */
-.theme-rock body {
+.theme-rock {
   background: #0f172a;
   color: #fff;
 }
@@ -291,7 +291,7 @@ body {
 }
 
 /* Luxury */
-.theme-luxury body {
+.theme-luxury {
   background: #0c0a09;
 }
 
@@ -309,7 +309,7 @@ body {
 }
 
 /* Real Estate Classic */
-.theme-classic body {
+.theme-classic {
   background: #f0f4f8;
 }
 
