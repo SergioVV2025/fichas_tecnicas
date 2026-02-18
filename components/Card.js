@@ -13,7 +13,6 @@ class Card {
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._isLiked = false;
-    alert(this._time + " - entro al constructor");
   }
 
   _like() {
