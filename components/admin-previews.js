@@ -101,7 +101,7 @@ function fillPreview(previewData) {
       </div>
 
       <div class="property__cta">
-        <a class="property__cta-button" href="https://wa.me/5215552178925">
+        <a class="property__cta-button" href="https://wa.me/5215534968099?text=${encodeURIComponent(`Hola, estoy interesado en la propiedad "${title}". ¿Podrías darme más información?`)}" target="_blank  ">
           Contactar por WhatsApp
         </a>
       </div>
