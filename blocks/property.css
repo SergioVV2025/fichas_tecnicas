@@ -192,9 +192,10 @@ body {
 }
 
 .property__counter {
-  margin: auto;
+  margin: 8px auto 0;
+  text-align: center;
   font-size: 0.9rem;
-}
+  color: #e5e7eb; /* visible en fondos oscuros */
 
 /* CTA */
 .property__cta {
@@ -284,6 +285,20 @@ body {
 .theme-rock .property__title {
   font-family: "Arial Black", Impact, sans-serif;
   text-transform: uppercase;
+}
+
+.theme-rock .property__counter {
+  color: #f9fafb;
+}
+
+.theme-rock .property__feature {
+  background-color: #1f2937;
+  color: #f9fafb;
+  border: 1px solid #dc2626;
+}
+
+.theme-rock .property__features-list {
+  gap: 0.75rem;
 }
 
 .theme-rock .property__cta-button {
