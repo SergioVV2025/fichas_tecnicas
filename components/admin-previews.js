@@ -89,9 +89,6 @@ function fillPreview(previewData) {
 
       <div class="property__image_gallery">
         <img class="property__image" src="${absoluteGallery[0]}" alt="${title}">
-        <div class="property__counter" id="imageCounter">
-          1 / 1
-        </div>
         <button class="property__btn left" id="btnBack">
           <img class="property__btn_image" src="${baseUrl}images/arrow_back.png" alt="Left arrow">
         </button>
@@ -99,7 +96,9 @@ function fillPreview(previewData) {
           <img class="property__btn_image" src="${baseUrl}images/arrow_forward.png" alt="Right arrow">
         </button>
       </div>
-
+      <div class="property__counter" id="imageCounter">
+        1 / 1
+      </div>
       <div class="property__cta">
         <a class="property__cta-button" href="https://wa.me/5215534968099?text=${encodeURIComponent(`Hola, estoy interesado en la propiedad "${title}". ¿Podrías darme más información?`)}" target="_blank  ">
           Contactar por WhatsApp
