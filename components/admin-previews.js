@@ -1,7 +1,6 @@
 import StorageService from "../components/StorageService.js";
 
 function fillPreview(previewData) {
-  // const theme = previewData.theme.trim() || "theme-classic";
   const id = previewData.id.trim();
   const title = previewData.title.trim();
   const description = previewData.descriptionOG.trim();
@@ -9,7 +8,7 @@ function fillPreview(previewData) {
   const baseUrl = previewData.urlProject.trim();
   const price = previewData.price.trim();
   const time = previewData.time.trim();
-  let i = 0;
+  const theme = previewData.theme.trim() || "theme-classic";
 
   // Features puede venir como string o como array
   let featuresRaw = previewData.features;
@@ -63,7 +62,7 @@ function fillPreview(previewData) {
 
 </head>
 
-<body class="theme-rock">
+<body class="${theme}">
   <main class="property">
 
     <section class="property__content">

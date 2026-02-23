@@ -73,6 +73,7 @@ function handleCardFormSubmit(formData) {
     features: formData.features,
     gallery: formData.gallery,
     time: formData.time,
+    theme: formData.theme,
   };
 
   const card = new Card(newProperty, "#card-template", handleCardClick);
@@ -148,11 +149,13 @@ function recoverPropertyInfo(id) {
 
   document.querySelector(".popup__input_type_preview-time").value =
     currentProperty.time;
+
+  document.querySelector(".popup__input_type_preview-theme").value =
+    currentProperty.theme;
 }
 
 function handlePreviewFormSubmit(formData) {
   const previewData = {
-    // theme: formData.theme,
     id: formData.id,
     title: formData.title,
     descriptionOG: formData.descriptionOG,
@@ -162,6 +165,7 @@ function handlePreviewFormSubmit(formData) {
     features: formData.features,
     gallery: formData.gallery,
     time: formData.time,
+    theme: formData.theme,
   };
   fillPreview(previewData);
   newPreviewPopup.close();

@@ -93,15 +93,6 @@
           ></button>
           <h3 class="popup__title">Nueva propiedad</h3>
           <form class="popup__form" id="new-card-form" name="new-card-form">
-            <!-- <label class="input__label">Id</label> -->
-            <!-- <input
-              class="popup__input popup__input_type_card-id"
-              name="id"
-              placeholder="Id"
-              required
-              type="number"
-              min="1"
-            /> -->
             <span class="popup__error popup__error_id"></span>
             <!-- <label class="input__label">Hero</label> -->
             <input
@@ -160,7 +151,28 @@
               minlength="2"
             ></textarea>
             <span class="popup__error popup__error_gallery"></span>
-            <!-- <label class="input__label">Galería</label> -->
+            <!-- <label class="input__label">Theme</label> -->
+            <select
+              class="popup__input popup__select popup__input_type_card-theme"
+              name="theme"
+              required
+            >
+              <option
+                class="popup__select popup__select_option-selected"
+                value=""
+                disabled
+                selected
+              >
+                Theme
+              </option>
+              <option value="theme-classic">Classic</option>
+              <option value="theme-modern">Modern</option>
+              <option value="theme-luxury">Luxury</option>
+              <option value="theme-rock">Rock</option>
+              <option value="theme-minimal">Minimal</option>
+            </select>
+            <span class="popup__error popup__error_theme"></span>
+            <!-- <label class="input__label">Time</label> -->
             <input
               class="popup__input popup__input_type_card-time"
               name="time"
@@ -186,27 +198,6 @@
             id="new-preview-form"
             name="new-preview-form"
           >
-            <!-- <label class="input__label">Estilos de Preview</label> -->
-            <!-- <select
-              class="popup__input popup__select popup__input_type_preview-theme"
-              name="theme"
-              required
-            >
-              <option
-                class="popup__select popup__select_option-selected"
-                value=""
-                disabled
-                selected
-              >
-                Estilos de Preview
-              </option>
-              <option value="theme-classic">Clásico</option>
-              <option value="theme-modern">Moderno</option>
-              <option value="theme-minimal">Minimal</option>
-              <option value="theme-rock">Rock</option>
-              <option value="theme-luxury">Lujo</option>
-            </select> -->
-
             <!-- <label class="input__label">Id</label> -->
             <input
               class="popup__input popup__input_type_property-id"
@@ -294,6 +285,27 @@
               minlength="2"
             />
             <span class="popup__error popup__error_time"></span>
+            <!-- <label class="input__label">Estilos de Preview</label> -->
+            <select
+              class="popup__input popup__select popup__input_type_card-theme"
+              name="theme"
+              required
+            >
+              <option
+                class="popup__select popup__select_option-selected"
+                value=""
+                disabled
+                selected
+              >
+                Theme
+              </option>
+              <option value="theme-classic">Classic</option>
+              <option value="theme-modern">Modern</option>
+              <option value="theme-luxury">Luxury</option>
+              <option value="theme-rock">Rock</option>
+              <option value="theme-minimal">Minimal</option>
+            </select>
+            <span class="popup__error popup__error_theme"></span>
             <button class="button popup__button" type="submit" disabled>
               Crear
             </button>
