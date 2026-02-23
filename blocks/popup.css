@@ -4,11 +4,17 @@
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
-  top: 0;
+  top: 6vh;
   left: 0;
   bottom: 0;
   right: 0;
   display: none;
+}
+
+.preview__content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .popup__button {
@@ -64,6 +70,11 @@
   position: relative;
   box-sizing: border-box;
   padding: 34px 36px;
+}
+
+.preview {
+  max-width: 1000px;
+  width: 100%;
 }
 
 .popup__form {

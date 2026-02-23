@@ -185,7 +185,7 @@
         </div>
       </div>
       <div class="popup" id="new-preview-popup">
-        <div class="popup__content">
+        <div class="popup__content preview">
           <button
             aria-label="Cerrar ventana emergente"
             class="popup__close"
@@ -197,113 +197,119 @@
             id="new-preview-form"
             name="new-preview-form"
           >
-            <!-- <label class="input__label">Id</label> -->
-            <input
-              class="popup__input popup__input_type_property-id"
-              name="id"
-              placeholder="Id"
-              required
-              type="number"
-              min="1"
-            />
-            <span class="popup__error popup__error_id"></span>
-            <!-- <label class="input__label">Title</label> -->
-            <input
-              class="popup__input popup__input_type_property-title"
-              name="title"
-              placeholder="Title"
-              required
-              type="text"
-              minlength="2"
-            />
-            <span class="popup__error popup__error_title"></span>
-            <!-- <label class="input__label">Descripción Open Graph</label> <br /> -->
-            <textarea
-              class="popup__input popup__textarea input__textarea-descriptionOG"
-              name="descriptionOG"
-              placeholder="Descripción Open Graph"
-              required
-              minlength="2"
-            ></textarea>
-            <span class="popup__error popup__error_descriptionOG"></span>
-            <!-- <label class="input__label">Imagen Hero</label> -->
-            <input
-              class="popup__input popup__input_type_imageOG"
-              name="imageOG"
-              placeholder="https:// (Imagen Open Graph (URL absoluta))"
-              required
-              type="text"
-              minlength="2"
-            />
-            <span class="popup__error popup__error_imageOG"></span>
-            <!-- <label class="input__label">URL pública base del proyecto</label> -->
-            <input
-              class="popup__input popup__input_type_urlProject"
-              name="urlProject"
-              placeholder="https://usuario.github.io/proyecto/ (URL pública base del proyecto)"
-              required
-              type="text"
-              minlength="2"
-            />
-            <span class="popup__error popup__error_urlProject"></span>
-            <!-- <label class="input__label">Precio</label> -->
-            <input
-              class="popup__input popup__input_type_preview-price"
-              name="price"
-              placeholder="Precio (ej: 2500)"
-              required
-              type="text"
-              minlength="2"
-            />
-            <span class="popup__error popup__error_price"></span>
-            <!-- <label class="input__label">Features</label> -->
-            <textarea
-              class="popup__input popup__textarea popup__input_type_preview-features"
-              name="features"
-              placeholder="Características separadas por comas o una por renglón."
-              required
-              minlength="2"
-            ></textarea>
-            <span class="popup__error popup__error_features"></span>
-            <!-- <label class="input__label">Image Gallery</label> -->
-            <textarea
-              class="popup__input popup__textarea popup__input_type_preview-gallery"
-              name="gallery"
-              placeholder="URLs de imágenes, una por renglón"
-              required
-              minlength="2"
-            ></textarea>
-            <span class="popup__error popup__error_gallery"></span>
-            <!-- <label class="input__label">Estilos de Preview</label> -->
-            <select
-              class="popup__input popup__select popup__input_type_preview-theme"
-              name="theme"
-              required
-            >
-              <option
-                class="popup__select popup__select_option-selected"
-                value=""
-                selected
-              >
-                Theme
-              </option>
-              <option value="theme-classic">Classic</option>
-              <option value="theme-modern">Modern</option>
-              <option value="theme-luxury">Luxury</option>
-              <option value="theme-rock">Rock</option>
-              <option value="theme-minimal">Minimal</option>
-            </select>
-            <span class="popup__error popup__error_theme"></span>
-            <!-- <label class="input__label">Time</label> -->
-            <input
-              class="popup__input popup__input_type_preview-time"
-              name="time"
-              placeholder="Hora de creación (ej: 123456)"
-              required
-              type="text"
-              minlength="2"
-            />
-            <span class="popup__error popup__error_time"></span>
+            <div class="preview__content">
+              <div class="preview__left">
+                <!-- <label class="input__label">Id</label> -->
+                <input
+                  class="popup__input popup__input_type_property-id"
+                  name="id"
+                  placeholder="Id"
+                  required
+                  type="number"
+                  min="1"
+                />
+                <span class="popup__error popup__error_id"></span>
+                <!-- <label class="input__label">Title</label> -->
+                <input
+                  class="popup__input popup__input_type_property-title"
+                  name="title"
+                  placeholder="Title"
+                  required
+                  type="text"
+                  minlength="2"
+                />
+                <span class="popup__error popup__error_title"></span>
+                <!-- <label class="input__label">Descripción Open Graph</label> <br /> -->
+                <textarea
+                  class="popup__input popup__textarea input__textarea-descriptionOG"
+                  name="descriptionOG"
+                  placeholder="Descripción Open Graph"
+                  required
+                  minlength="2"
+                ></textarea>
+                <span class="popup__error popup__error_descriptionOG"></span>
+                <!-- <label class="input__label">Imagen Hero</label> -->
+                <input
+                  class="popup__input popup__input_type_imageOG"
+                  name="imageOG"
+                  placeholder="https:// (Imagen Open Graph (URL absoluta))"
+                  required
+                  type="text"
+                  minlength="2"
+                />
+                <span class="popup__error popup__error_imageOG"></span>
+                <!-- <label class="input__label">URL pública base del proyecto</label> -->
+                <input
+                  class="popup__input popup__input_type_urlProject"
+                  name="urlProject"
+                  placeholder="https://usuario.github.io/proyecto/ (URL pública base del proyecto)"
+                  required
+                  type="text"
+                  minlength="2"
+                />
+                <span class="popup__error popup__error_urlProject"></span>
+              </div>
+              <div class="preview__right">
+                <!-- <label class="input__label">Precio</label> -->
+                <input
+                  class="popup__input popup__input_type_preview-price"
+                  name="price"
+                  placeholder="Precio (ej: 2500)"
+                  required
+                  type="text"
+                  minlength="2"
+                />
+                <span class="popup__error popup__error_price"></span>
+                <!-- <label class="input__label">Features</label> -->
+                <textarea
+                  class="popup__input popup__textarea popup__input_type_preview-features"
+                  name="features"
+                  placeholder="Características separadas por comas o una por renglón."
+                  required
+                  minlength="2"
+                ></textarea>
+                <span class="popup__error popup__error_features"></span>
+                <!-- <label class="input__label">Image Gallery</label> -->
+                <textarea
+                  class="popup__input popup__textarea popup__input_type_preview-gallery"
+                  name="gallery"
+                  placeholder="URLs de imágenes, una por renglón"
+                  required
+                  minlength="2"
+                ></textarea>
+                <span class="popup__error popup__error_gallery"></span>
+                <!-- <label class="input__label">Estilos de Preview</label> -->
+                <select
+                  class="popup__input popup__select popup__input_type_preview-theme"
+                  name="theme"
+                  required
+                >
+                  <option
+                    class="popup__select popup__select_option-selected"
+                    value=""
+                    selected
+                  >
+                    Theme
+                  </option>
+                  <option value="theme-classic">Classic</option>
+                  <option value="theme-modern">Modern</option>
+                  <option value="theme-luxury">Luxury</option>
+                  <option value="theme-rock">Rock</option>
+                  <option value="theme-minimal">Minimal</option>
+                </select>
+                <span class="popup__error popup__error_theme"></span>
+                <!-- <label class="input__label">Time</label> -->
+                <input
+                  class="popup__input popup__input_type_preview-time"
+                  name="time"
+                  placeholder="Hora de creación (ej: 123456)"
+                  required
+                  type="text"
+                  minlength="2"
+                />
+                <span class="popup__error popup__error_time"></span>
+              </div>
+            </div>
             <button class="button popup__button" type="submit" disabled>
               Crear
             </button>
