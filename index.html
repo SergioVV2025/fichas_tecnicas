@@ -160,7 +160,6 @@
               <option
                 class="popup__select popup__select_option-selected"
                 value=""
-                disabled
                 selected
               >
                 Theme
@@ -275,26 +274,15 @@
               minlength="2"
             ></textarea>
             <span class="popup__error popup__error_gallery"></span>
-            <!-- <label class="input__label">Time</label> -->
-            <input
-              class="popup__input popup__input_type_preview-time"
-              name="time"
-              placeholder="Hora de creación (ej: 123456)"
-              required
-              type="text"
-              minlength="2"
-            />
-            <span class="popup__error popup__error_time"></span>
             <!-- <label class="input__label">Estilos de Preview</label> -->
             <select
-              class="popup__input popup__select popup__input_type_card-theme"
+              class="popup__input popup__select popup__input_type_preview-theme"
               name="theme"
               required
             >
               <option
                 class="popup__select popup__select_option-selected"
                 value=""
-                disabled
                 selected
               >
                 Theme
@@ -306,6 +294,16 @@
               <option value="theme-minimal">Minimal</option>
             </select>
             <span class="popup__error popup__error_theme"></span>
+            <!-- <label class="input__label">Time</label> -->
+            <input
+              class="popup__input popup__input_type_preview-time"
+              name="time"
+              placeholder="Hora de creación (ej: 123456)"
+              required
+              type="text"
+              minlength="2"
+            />
+            <span class="popup__error popup__error_time"></span>
             <button class="button popup__button" type="submit" disabled>
               Crear
             </button>
