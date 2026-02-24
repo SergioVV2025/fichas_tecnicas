@@ -346,7 +346,7 @@ body {
   background: rgba(0, 0, 0, 0.05);
   padding: 4px 10px;
   border-radius: 999px;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 .theme-modern .property__cta-button {
@@ -365,13 +365,13 @@ body {
 }
 
 .theme-modern .property__btn {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(4px);
   border-radius: 50%;
 }
 
 .theme-modern .property__btn:hover {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Rock */
