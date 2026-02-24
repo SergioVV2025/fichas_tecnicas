@@ -154,7 +154,7 @@ body {
   flex-direction: column;
   gap: 10px;
   margin: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
   /* position: relative; ojo con esto, opcional por si no se ve bien el contador
   z-index: 1; */
 }
@@ -210,6 +210,7 @@ body {
   position: relative;
   z-index: 2;
   font-weight: 500;
+  width: 8%;
 }
 
 /* CTA */
@@ -347,7 +348,6 @@ body {
   padding: 4px 10px;
   border-radius: 999px;
   /* display: inline-block; */
-  width: 4%;
 }
 
 .theme-modern .property__cta-button {
