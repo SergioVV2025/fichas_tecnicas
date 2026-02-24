@@ -58,7 +58,6 @@ class Card {
     const cardWhatsappButton = this._cardElement.querySelector(
       ".card__whatsapp-button",
     );
-
     cardWhatsappButton.addEventListener("click", (evt) => {
       evt.stopPropagation();
 
