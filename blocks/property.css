@@ -197,6 +197,7 @@ body {
 }
 
 .property__btn_image {
+  width: 50%;
   height: 8vh;
 }
 
