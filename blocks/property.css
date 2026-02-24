@@ -347,7 +347,7 @@ body {
   padding: 4px 10px;
   border-radius: 999px;
   /* display: inline-block; */
-  width: min-content;
+  width: 2%;
 }
 
 .theme-modern .property__cta-button {
