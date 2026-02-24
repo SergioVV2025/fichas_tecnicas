@@ -135,6 +135,11 @@ body {
   border-radius: 4px;
 }
 
+.property__feature:hover {
+  background-color: #e5e7eb;
+  transform: translateY(-2px);
+}
+
 /* DESCRIPCIÓN */
 .property__description {
   margin-bottom: 1.5rem;
@@ -150,12 +155,15 @@ body {
   gap: 10px;
   margin: auto;
   margin-bottom: 1rem;
+  /* position: relative; ojo con esto, opcional por si no se ve bien el contador
+  z-index: 1; */
 }
 
 .property__image {
   width: 100%;
   aspect-ratio: 4 / 3;
   border-radius: 8px;
+  transition: opacity 0.3s ease;
 }
 
 .property__image:hover {
@@ -163,7 +171,7 @@ body {
 }
 
 .property__btn {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.3);
@@ -171,11 +179,26 @@ body {
   border-radius: 8px;
   cursor: pointer;
   width: 6%;
-  padding: 10px 2px;
+  padding: 10px 2px; */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.25);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
 }
 
 .property__btn:hover {
+  /* background-color: rgba(0, 0, 0, 0.5); */
   background-color: rgba(0, 0, 0, 0.5);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .left {
@@ -196,7 +219,10 @@ body {
   margin-bottom: 1.5rem;
   text-align: center;
   font-size: 0.9rem;
-  color: #e5e7eb; /* visible en fondos oscuros */
+  color: #6b7280; /* gris visible */
+  position: relative;
+  z-index: 2;
+  font-weight: 500;
 }
 
 /* CTA */
@@ -213,15 +239,21 @@ body {
   padding: 0.8rem 1.2rem;
   font-size: 1.1rem;
   font-weight: 600;
-  border-radius: 6px;
+  border-radius: 8px; /* ← antes 6px */
   transition:
     background-color 0.2s ease,
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
 
+.property__cta-button:hover {
+  background-color: #1ebe5d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
 /* Animación del botón CTA */
-@keyframes ctaPulse {
+/* @keyframes ctaPulse {
   0% {
     transform: scale(1);
   }
@@ -235,7 +267,7 @@ body {
 
 .property__cta-button {
   animation: ctaPulse 1.8s infinite ease-in-out;
-}
+} */
 
 /* ===== SISTEMA DE TEMAS ===== */
 
@@ -323,12 +355,41 @@ body {
   border: 1px solid #d1d5db;
 }
 
+/* 🔥 TÍTULO (menos azul, más elegante) */
 .theme-classic .property__title {
-  color: #1e40af;
+  color: #2c2c2c;
+  font-weight: 600;
 }
 
+/* 💰 PRECIO más pro */
 .theme-classic .property__price {
   color: #065f46;
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
+}
+
+/* 🧩 FEATURES mejoradas */
+.theme-classic .property__feature {
+  background: #f5f5f5;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+
+/* 📝 DESCRIPCIÓN más legible */
+.theme-classic .property__description {
+  color: #555;
+  line-height: 1.5;
+}
+
+/* 📸 IMAGENES más suaves */
+.theme-classic .property__hero-image {
+  filter: brightness(0.95);
+  border-radius: 10px;
+}
+
+.theme-classic .property__image {
+  border-radius: 10px;
 }
 
 /* RESPONSIVO */
