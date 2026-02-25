@@ -86,7 +86,7 @@ function fillPreview(previewData) {
         <p class="property__description">${description}</p>
       </div>
 
-      <div class="property__image_gallery">
+      <div class="property__image-gallery">
         <img class="property__image" src="${absoluteGallery[0]}" alt="${title}">
         <button class="property__btn property__btn-left" id="btnBack">
           <img class="property__btn_image" src="${baseUrl}images/arrow_back.png" alt="Left arrow">

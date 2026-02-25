@@ -265,6 +265,9 @@ body {
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+}
+
+.theme-modern .property {
   animation: fadeIn 0.4s ease-in-out;
 }
 
@@ -340,6 +343,9 @@ body {
 .theme-rock .property__title {
   font-family: "Arial Black", Impact, sans-serif;
   text-transform: uppercase;
+}
+
+.theme-rock .property__title {
   letter-spacing: 1px;
 }
 
@@ -349,6 +355,7 @@ body {
 
 /* Luxury */
 .theme-luxury {
+  /* background: #0c0a09; */
   background: radial-gradient(circle at top, #1c1917, #0c0a09);
 }
 
