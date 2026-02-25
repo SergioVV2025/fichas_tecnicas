@@ -110,7 +110,7 @@ body {
 .property__feature {
   background-color: #f3f4f6;
   padding: 0.4rem 0.6rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   border-radius: 4px;
 }
 
@@ -122,7 +122,7 @@ body {
 /* DESCRIPCIÓN */
 .property__description {
   margin-bottom: 1.5rem;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 /* GALERÍA */
@@ -182,8 +182,6 @@ body {
   text-align: center;
   font-size: 0.9rem;
   color: #6b7280; /* gris visible */
-  position: relative;
-  z-index: 2;
   font-weight: 500;
   width: 80px;
 }
@@ -436,6 +434,11 @@ body {
   border: 1px solid #d1d5db;
 }
 
+.theme-classic .property__hero-image {
+  filter: brightness(0.9);
+  border-radius: 10px;
+}
+
 .theme-classic .property__title {
   color: #2c2c2c;
   font-weight: 600;
@@ -444,14 +447,23 @@ body {
 .theme-classic .property__price {
   color: #065f46;
   font-size: 1.6rem;
+  font-weight: bold;
   letter-spacing: 0.5px;
 }
 
 .theme-classic .property__feature {
-  background: #f5f5f5;
-  border: 1px solid #e5e7eb;
+  background-color: #f3f4f6;
+  border: 1px solid #e0e0e0;
   border-radius: 6px;
   padding: 8px 12px;
+  padding: 0.4rem 0.6rem;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.property__feature:hover {
+  background-color: #e5e7eb;
+  transform: translateY(-2px);
 }
 
 .theme-classic .property__counter {
@@ -462,11 +474,6 @@ body {
 .theme-classic .property__description {
   color: #555;
   line-height: 1.5;
-}
-
-.theme-classic .property__hero-image {
-  filter: brightness(0.9);
-  border-radius: 10px;
 }
 
 .theme-classic .property__image {
