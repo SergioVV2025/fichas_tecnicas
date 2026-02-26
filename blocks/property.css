@@ -213,6 +213,27 @@ body {
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
 
+.property__map-preview {
+  display: block;
+  width: 75%;
+  margin: 0 auto 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.property__map-preview img {
+  width: 100%;
+  display: block;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.property__map-preview:hover img {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
 .property__agent {
   margin-top: 0.5rem;
   font-size: 1rem;

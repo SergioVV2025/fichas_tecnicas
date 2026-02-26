@@ -103,10 +103,22 @@ function fillPreview(previewData) {
           Contactar por WhatsApp
         </a>
       </div>
+      <div>
+        <a
+        href="https://maps.google.com/?q=19.37021943304474, -99.26008783725388"
+        target="_blank"
+        class="property__map-preview"
+        >
+          <img
+            src="https://maps.googleapis.com/maps/api/staticmap?center=19.4326,-99.1332&zoom=15&size=600x300&markers=color:red%7C19.37021943304474, -99.26008783725388"
+            alt="Ubicación"
+          >
+        </a>
+      </div>
       <div class="property__agent">
         <div class="property__agent-broker">&nbsp;Clara Reyes Santiago</div>
         <div class="property__agent-phone">
-          <a class="property__agent-number" href="tel:5529006490">&nbsp;55 3496 8099</a>
+          <a class="property__agent-number" href="tel:5534968099">&nbsp;55 3496 8099</a>
         </div>
       </div>
 
