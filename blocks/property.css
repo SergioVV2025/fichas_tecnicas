@@ -252,6 +252,12 @@ body {
   top: 2px;
 }
 
+.property__agent-phone {
+  color: #222;
+  border: 1px solid #7d7d7d;
+  border-radius: 4px;
+}
+
 .property__agent-phone::before {
   content: url(../images/mobile.png);
   position: relative;
