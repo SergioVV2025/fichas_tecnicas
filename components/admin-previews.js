@@ -103,6 +103,12 @@ function fillPreview(previewData) {
           Contactar por WhatsApp
         </a>
       </div>
+      <div class="property__agent">
+        <div class="property__agent-broker">&nbsp;Clara Reyes Santiago</div>
+        <div class="property__agent-phone">
+          <a class="property__agent-number" href="tel:5529006490">&nbsp;55 2900 6490</a>
+        </div>
+      </div>
 
     </section>
 
