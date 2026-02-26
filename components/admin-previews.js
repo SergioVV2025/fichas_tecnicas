@@ -99,12 +99,12 @@ function fillPreview(previewData) {
         1 / 1
       </div>
       <div class="property__cta">
-        <a class="property__cta-button" href="https://wa.me/5215534968099?text=${encodeURIComponent(`Hola, estoy interesado en la propiedad "${title}". ¿Podrías darme más información?`)}" target="_blank  ">
+        <a class="property__cta-button" href="https://wa.me/5215534968099?text=${encodeURIComponent(`Hola, estoy interesado en la propiedad "${title}".\n¿Podrías darme más información?`)}" target="_blank  ">
           Contactar por WhatsApp
         </a>
       </div>
       <div class="property__agent">
-        <div class="property__agent-broker">&nbsp;Clara Reyes Santiago</div>
+        <div class="property__agent-broker">&nbsp;Clara Reyes S.</div>
         <div class="property__agent-phone">
           <a class="property__agent-number" href="tel:5529006490">&nbsp;55 2900 6490</a>
         </div>
