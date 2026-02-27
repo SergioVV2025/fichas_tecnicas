@@ -79,7 +79,7 @@ class Property {
     const htmlFeatures = this._htmlElement.querySelector(
       ".property__features-list",
     );
-    const pattern = /[^,;:\n\t]+/g;
+    const pattern = /[^;\n\t]+/g;
     const featuresArray = this._features.match(pattern);
     let featureElement, featureText;
     for (let feature of featuresArray) {
