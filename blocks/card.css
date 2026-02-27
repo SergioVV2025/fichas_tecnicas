@@ -88,6 +88,11 @@
   margin-top: 10px;
 }
 
+.card__address {
+  height: 2rem;
+  overflow: auto;
+}
+
 .card__whatsapp-button {
   width: 21px;
   height: 19px;

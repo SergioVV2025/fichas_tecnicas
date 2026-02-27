@@ -74,6 +74,7 @@ function handleCardFormSubmit(formData) {
     gallery: formData.gallery,
     time: formData.time,
     theme: formData.theme,
+    address: formData.address,
   };
 
   const card = new Card(newProperty, "#card-template", handleCardClick);
@@ -152,6 +153,9 @@ function recoverPropertyInfo(id) {
 
   document.querySelector(".popup__input_type_preview-theme").value =
     currentProperty.theme;
+
+  document.querySelector(".popup__input_type_preview-address").value =
+    currentProperty.address;
 }
 
 function handlePreviewFormSubmit(formData) {
@@ -166,6 +170,7 @@ function handlePreviewFormSubmit(formData) {
     gallery: formData.gallery,
     time: formData.time,
     theme: formData.theme,
+    address: formData.address,
   };
   fillPreview(previewData);
   newPreviewPopup.close();

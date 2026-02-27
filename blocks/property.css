@@ -213,25 +213,20 @@ body {
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
 
-.property__map-preview {
-  display: block;
-  width: 75%;
-  margin: 0 auto 1rem;
-  border-radius: 8px;
-  overflow: hidden;
+.property__location-label {
+  margin-top: 1.5rem;
 }
 
-.property__map-preview img {
-  width: 100%;
-  display: block;
-  transition:
-    transform 0.25s ease,
-    opacity 0.25s ease;
+.property__map-link {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #2563eb;
+  text-decoration: none;
 }
 
-.property__map-preview:hover img {
-  transform: scale(1.02);
-  opacity: 0.9;
+.property__map-link:hover {
+  text-decoration: underline;
 }
 
 .property__agent {
@@ -253,7 +248,6 @@ body {
 }
 
 .property__agent-phone {
-  color: #222;
   border: 1px solid #7d7d7d;
   border-radius: 4px;
 }
@@ -264,7 +258,14 @@ body {
   top: 2px;
 }
 
+.property__agent-phone:hover {
+  border: 1px solid black;
+  background: #f0f0f0;
+  color: black;
+}
+
 .property__agent-number {
+  color: #7d7d7d;
   text-decoration: none;
 }
 

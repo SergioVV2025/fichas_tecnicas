@@ -10,6 +10,7 @@ class Card {
     this._features = data.features;
     this._gallery = data.gallery;
     this._time = data.time;
+    this._address = data.address;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._isLiked = false;
@@ -142,6 +143,9 @@ class Card {
       imageItem.setAttribute("alt", this._gallery[i]);
       imageGallery.appendChild(imageItem);
     }
+
+    const cardAddress = this._cardElement.querySelector(".card__address");
+    cardAddress.textContent = this._address;
 
     this._setEventListeners();
 

@@ -63,6 +63,7 @@
                   <div class="card__gallery">
                     <!-- Galeria de imagenes -->
                   </div>
+                  <p class="card__address"></p>
                   <div class="card__bottom_buttons">
                     <button
                       aria-label="Botón Whatsapp"
@@ -151,6 +152,16 @@
               minlength="2"
             ></textarea>
             <span class="popup__error popup__error_gallery"></span>
+            <!-- <label class="input__label">Direccón</label> -->
+            <input
+              class="popup__input popup__input_type_card-address"
+              name="address"
+              placeholder="Dirección"
+              required
+              type="text"
+              minlength="2"
+            />
+            <span class="popup__error popup__error_address"></span>
             <!-- <label class="input__label">Theme</label> -->
             <select
               class="popup__input popup__select popup__input_type_card-theme"
@@ -248,8 +259,6 @@
                   minlength="2"
                 />
                 <span class="popup__error popup__error_urlProject"></span>
-              </div>
-              <div class="preview__right">
                 <!-- <label class="input__label">Precio</label> -->
                 <input
                   class="popup__input popup__input_type_preview-price"
@@ -259,6 +268,8 @@
                   type="text"
                   minlength="2"
                 />
+              </div>
+              <div class="preview__right">
                 <span class="popup__error popup__error_price"></span>
                 <!-- <label class="input__label">Features</label> -->
                 <textarea
@@ -278,6 +289,16 @@
                   minlength="2"
                 ></textarea>
                 <span class="popup__error popup__error_gallery"></span>
+                <!-- <label class="input__label">Address</label> -->
+                <input
+                  class="popup__input popup__input_type_preview-address"
+                  name="address"
+                  placeholder="Dirección"
+                  required
+                  type="text"
+                  minlength="2"
+                />
+                <span class="popup__error popup__error_address"></span>
                 <!-- <label class="input__label">Estilos de Preview</label> -->
                 <select
                   class="popup__input popup__select popup__input_type_preview-theme"

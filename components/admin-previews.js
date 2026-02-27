@@ -9,6 +9,7 @@ function fillPreview(previewData) {
   const price = previewData.price.trim();
   const time = previewData.time.trim();
   const theme = previewData.theme.trim() || "theme-classic";
+  const address = previewData.address.trim();
 
   // Features puede venir como string o como array
   let featuresRaw = previewData.features;
@@ -43,6 +44,11 @@ function fillPreview(previewData) {
     const absolutePath = baseUrl + img.slice(2);
     return absolutePath;
   });
+
+  function getMapLink() {
+    return `"https://www.google.com/maps?q=${encodeURIComponent(address)}"`;
+  }
+  const mapLink = getMapLink();
 
   const htmlContent = `<!doctype html>
 <html lang="es">
@@ -103,25 +109,22 @@ function fillPreview(previewData) {
           Contactar por WhatsApp
         </a>
       </div>
-      <div>
-        <a
-        href="https://maps.google.com/?q=19.37021943304474, -99.26008783725388"
-        target="_blank"
-        class="property__map-preview"
-        >
-          <img
-            src="https://maps.googleapis.com/maps/api/staticmap?center=19.4326,-99.1332&zoom=15&size=600x300&markers=color:red%7C19.37021943304474, -99.26008783725388"
-            alt="Ubicación"
-          >
-        </a>
-      </div>
       <div class="property__agent">
-        <div class="property__agent-broker">&nbsp;Clara Reyes Santiago</div>
+        <div class="property__agent-broker">&nbsp;Sergio Verástegtui Vega</div>
         <div class="property__agent-phone">
-          <a class="property__agent-number" href="tel:5534968099">&nbsp;55 3496 8099</a>
+          <a class="property__agent-number" href="tel:5552178925">&nbsp;5552178952</a>
         </div>
       </div>
-
+      <div>
+      <p class="property__location-label">${address}</p>
+        <a
+        href=${mapLink}
+        target="_blank"
+        class="property__map-link"
+        >
+          Ir a ubicación
+        </a>
+      </div>
     </section>
 
   </main>
@@ -159,6 +162,7 @@ function fillPreview(previewData) {
       updateSlider();
     });
   })();
+
 </script>
 
 </body>

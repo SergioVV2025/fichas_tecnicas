@@ -14,6 +14,7 @@ const Properties = [
       "./images/habitacionMuestra.jpg",
       "./images/jardinMuestra.jpg",
     ],
+    address: "Ubicación",
   },
   // {
   //   id: 2,
