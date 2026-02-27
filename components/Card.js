@@ -126,7 +126,7 @@ class Card {
     cardDescription.textContent = this._description;
 
     const cardFeatures = this._cardElement.querySelector(".card__features");
-    const pattern = /[^,;:\n\t]+/g;
+    const pattern = /[^;\n\t]+/g;
     const featuresArray = this._features.match(pattern);
     let featuresStringDisplay = "";
     for (let feature of featuresArray) {
