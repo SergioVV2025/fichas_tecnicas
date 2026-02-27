@@ -6,7 +6,7 @@ const Properties = [
     price: "100,000.00 MXN",
     description: "Descripción de Inmueble",
     features:
-      "Caracterítica 1 (m²), Característica 2 (Habiatciones), Característica 3 (Baños), Característica 4 (Estacionamiento), Característica 5 (etc.)",
+      "Característica 1 (m²), Característica 2 (Habiatciones), Característica 3 (Baños), Característica 4 (Estacionamiento), Característica 5 (etc.)",
     gallery: [
       "./images/cocinaMuestra.jpg",
       "./images/estacionamientoMuestra.jpg",

@@ -29,7 +29,7 @@ class PopupWithForm extends Popup {
     const formData = {};
     this._inputList.forEach((input) => {
       if (input.name === "gallery") {
-        const pattern = /[^;\n]+/g;
+        const pattern = /[^,;:\n\t]+/g;
         const galleryArray = input.value.match(pattern);
         formData[input.name] = galleryArray;
       } else {

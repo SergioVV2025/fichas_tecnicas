@@ -172,6 +172,7 @@ function handlePreviewFormSubmit(formData) {
     theme: formData.theme,
     address: formData.address,
   };
+  alert(previewData.features);
   fillPreview(previewData);
   newPreviewPopup.close();
 }
