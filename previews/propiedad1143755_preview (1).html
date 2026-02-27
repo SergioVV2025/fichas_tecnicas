@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Nuevo Inmueble prueba estable 1</title>
+
+<link rel="stylesheet" href="../blocks/property.css" />
+
+<meta property="og:title" content="Nuevo Inmueble prueba estable 1" />
+<meta property="og:description" content="Descripcion de inmueble prueba 1, Prueba 26 de Febrero Theme - Classic
+Nombre y teléfono" />
+<meta property="og:image" content="https://sergiovv2025.github.io/fichas_tecnicas/images/Balcon1.jpg" />
+<meta property="og:url" content="https://sergiovv2025.github.io/fichas_tecnicas/previews/propiedad1143755_preview.html" />
+<meta property="og:type" content="website" />
+
+</head>
+
+<body class="theme-classic">
+  <main class="property">
+
+    <section class="property__content">
+
+      <div>
+        <img class="property__hero-image" src="https://sergiovv2025.github.io/fichas_tecnicas/images/Balcon1.jpg" alt="Nuevo Inmueble prueba estable 1" />
+      </div>
+
+      <div>
+        <h1 class="property__title">Nuevo Inmueble prueba estable 1</h1>
+        <p class="property__price">10,000.00 MXN</p>
+      </div>
+
+      <div>
+        <ul class="property__features-list">
+          <li class="property__feature">Característica 1</li><li class="property__feature">Característica 2</li><li class="property__feature">Característica 3</li><li class="property__feature">Característica 4</li><li class="property__feature">Característica 5</li><li class="property__feature">Característica 6</li><li class="property__feature">400 m²</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="property__description">Descripcion de inmueble prueba 1, Prueba 26 de Febrero Theme - Classic
+Nombre y teléfono</p>
+      </div>
+
+      <div class="property__image-gallery">
+        <img class="property__image" src="https://sergiovv2025.github.io/fichas_tecnicas/images/Balcon1.jpg" alt="Nuevo Inmueble prueba estable 1">
+        <button class="property__btn property__btn-left" id="btnBack">
+          <img class="property__btn_image" src="https://sergiovv2025.github.io/fichas_tecnicas/images/arrow_back.png" alt="Left arrow">
+        </button>
+        <button class="property__btn property__btn-right" id="btnForward">
+          <img class="property__btn_image" src="https://sergiovv2025.github.io/fichas_tecnicas/images/arrow_forward.png" alt="Right arrow">
+        </button>
+      </div>
+      <div class="property__counter" id="imageCounter">
+        1 / 1
+      </div>
+      <div class="property__cta">
+        <a class="property__cta-button" href="https://wa.me/5215534968099?text=Hola%2C%20estoy%20interesado%20en%20la%20propiedad%20%22Nuevo%20Inmueble%20prueba%20estable%201%22.%0A%C2%BFPodr%C3%ADas%20darme%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank  ">
+          Contactar por WhatsApp
+        </a>
+      </div>
+      <div class="property__agent">
+        <div class="property__agent-broker">&nbsp;Sergio Verástegtui Vega</div>
+        <div class="property__agent-phone">
+          <a class="property__agent-number" href="tel:5552178925">&nbsp;5552178952</a>
+        </div>
+      </div>
+      <div>
+      <p class="property__location-label">undefined</p>
+        <a
+        href="https://www.google.com/maps?q=undefined"
+        target="_blank"
+        class="property__map-link"
+        >
+          Ir a ubicación &rarr;
+        </a>
+      </div>
+    </section>
+
+  </main>
+<script>
+  (function () {
+    const images = ["https://sergiovv2025.github.io/fichas_tecnicas/images/Balcon1.jpg","https://sergiovv2025.github.io/fichas_tecnicas/images/Baño1.jpg","https://sergiovv2025.github.io/fichas_tecnicas/images/bañoMuestra.jpg","https://sergiovv2025.github.io/fichas_tecnicas/images/Barco1.jpg","https://sergiovv2025.github.io/fichas_tecnicas/images/Chica1.jpg","https://sergiovv2025.github.io/fichas_tecnicas/images/Cocina1.jpg","https://sergiovv2025.github.io/fichas_tecnicas/images/cocinaMuestra.jpg","https://sergiovv2025.github.io/fichas_tecnicas/images/Comedor1.jpg","https://sergiovv2025.github.io/fichas_tecnicas/images/Edificios1.jpg","https://sergiovv2025.github.io/fichas_tecnicas/images/Escalera1.jpg","https://sergiovv2025.github.io/fichas_tecnicas/images/Estacionamiento1.jpg","https://sergiovv2025.github.io/fichas_tecnicas/images/estacionamientoMuestra.jpg","https://sergiovv2025.github.io/fichas_tecnicas/images/estudioMuestra.jpg","https://sergiovv2025.github.io/fichas_tecnicas/images/habitacionMuestra.jpg","https://sergiovv2025.github.io/fichas_tecnicas/images/heroMuestra.jpg","https://sergiovv2025.github.io/fichas_tecnicas/images/jardinMuestra.jpg"];
+    let currentIndex = 0;
+
+    const img = document.querySelector(".property__image");
+    const btnBack = document.getElementById("btnBack");
+    const btnForward = document.getElementById("btnForward");
+    const counter = document.getElementById("imageCounter");
+
+    if (!img || !btnBack || !btnForward || images.length === 0) return;
+
+    function updateSlider() {
+      img.src = images[currentIndex];
+
+      if (counter) {
+        counter.textContent = (currentIndex + 1) + " / " + images.length;
+      }
+    }
+
+    // 🔹 render inicial
+    updateSlider();
+
+    btnForward.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateSlider();
+    });
+
+    btnBack.addEventListener("click", () => {
+      currentIndex =
+        (currentIndex - 1 + images.length) % images.length;
+      updateSlider();
+    });
+  })();
+
+</script>
+
+</body>
+</html>
