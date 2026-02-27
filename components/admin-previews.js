@@ -122,7 +122,7 @@ function fillPreview(previewData) {
         target="_blank"
         class="property__map-link"
         >
-          Ir a ubicación
+          Ir a ubicación &rarr;
         </a>
       </div>
     </section>
