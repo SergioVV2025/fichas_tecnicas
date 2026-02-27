@@ -110,7 +110,7 @@ body {
 .property__feature {
   background-color: #f3f4f6;
   padding: 0.4rem 0.6rem;
-  font-size: 1rem;
+  font-size: 0.85rem;
   border-radius: 4px;
 }
 
@@ -122,7 +122,7 @@ body {
 /* DESCRIPCIÓN */
 .property__description {
   margin-bottom: 1.5rem;
-  font-size: 1rem;
+  font-size: 0.85rem;
 }
 
 /* GALERÍA */
@@ -217,22 +217,10 @@ body {
   margin-top: 1.5rem;
 }
 
-.property__map-link {
-  display: inline-block;
-  margin-top: 6px;
-  font-size: 13px;
-  color: #2563eb;
-  text-decoration: none;
-}
-
-.property__map-link:hover {
-  text-decoration: underline;
-}
-
 .property__agent {
   margin-top: 0.5rem;
-  font-size: 1rem;
-  line-height: 1rem;
+  font-size: 0.85rem;
+  line-height: 0.9rem;
   color: #7d7d7d;
   font-weight: 500;
   text-align: center;
@@ -267,6 +255,22 @@ body {
 .property__agent-number {
   color: #7d7d7d;
   text-decoration: none;
+}
+
+.property__location-label {
+  font-size: 0.85rem;
+}
+
+.property__map-link {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 0.81rem;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.property__map-link:hover {
+  text-decoration: underline;
 }
 
 /* ANIMACIONES */
