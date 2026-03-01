@@ -46,12 +46,6 @@
   overflow: auto;
 }
 
-.card__title:focus {
-  text-shadow:
-    5px 5px 1px #ff0000,
-    10px 10px 1px #00ff00;
-}
-
 .card__price {
   font-weight: 400;
   height: 1.5rem;
