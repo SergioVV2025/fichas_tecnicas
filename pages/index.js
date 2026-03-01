@@ -297,7 +297,6 @@ function setFocus() {
   const cardFocus = cardListFocus.lastElementChild;
   const cardFocusWhats = cardFocus.querySelector(".card__whatsapp-button");
   cardFocusWhats.focus();
-  debugger;
 }
 
 setFocus();
