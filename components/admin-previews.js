@@ -18,7 +18,7 @@ function fillPreview(previewData) {
   if (Array.isArray(featuresRaw)) {
     featuresList = featuresRaw;
   } else if (typeof featuresRaw === "string") {
-    featuresList = featuresRaw.split(/[.;\n]/);
+    featuresList = featuresRaw.split(/[\n]/);
   }
 
   const gallery = previewData.gallery || [];

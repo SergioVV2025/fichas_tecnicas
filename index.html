@@ -30,6 +30,23 @@
               </div>
             </li>
             <li class="nav__list-item nav__dropdown">
+              <button class="nav__list-link" type="button">Backup</button>
+              <div class="nav__dropdown-content">
+                <button
+                  class="nav__list-link nav__list-link__export"
+                  type="button"
+                >
+                  Export
+                </button>
+                <button
+                  class="nav__list-link nav__list-link__import"
+                  type="button"
+                >
+                  Import
+                </button>
+              </div>
+            </li>
+            <!-- <li class="nav__list-item nav__dropdown">
               <button class="nav__list-link" type="button">About</button>
               <div class="nav__dropdown-content">
                 <button
@@ -39,7 +56,7 @@
                   Me
                 </button>
               </div>
-            </li>
+            </li> -->
           </ul>
         </nav>
       </header>
@@ -334,6 +351,54 @@
             <button class="button popup__button" type="submit" disabled>
               Crear
             </button>
+          </form>
+        </div>
+      </div>
+      <div class="popup" id="new-export-popup">
+        <div class="popup__content">
+          <button
+            aria-label="Cerrar ventana emergente"
+            class="popup__close"
+            type="button"
+          ></button>
+          <h3 class="popup__title">Export Local Storage</h3>
+          <form class="popup__form" id="new-export-form" name="new-export-form">
+            <!-- <label class="input__label">Export</label> -->
+            <input
+              class="popup__input popup__input_type_file-export"
+              name="export"
+              placeholder="Export"
+              required
+              type="text"
+              minlength="2"
+            />
+            <span class="popup__error popup__error_export"></span>
+            <button class="button popup__button" type="submit" disabled>
+              Exportar
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="popup" id="new-import-popup">
+        <div class="popup__content">
+          <button
+            aria-label="Cerrar ventana emergente"
+            class="popup__close"
+            type="button"
+          ></button>
+          <h3 class="popup__title">Import Local Storage</h3>
+          <form class="popup__form" id="new-import-form" name="new-import-form">
+            <input
+              class="popup__input popup__input_type_file-import"
+              name="import"
+              placeholder="Local Storage"
+              required
+              type="file"
+            />
+            <button class="button popup__button" type="submit" disabled>
+              Importar
+            </button>
+            <span class="popup__error popup__error_import"></span>
           </form>
         </div>
       </div>

@@ -13,6 +13,12 @@ const newPreviewPopup = new PopupWithForm(
   "#new-preview-popup",
   handlePreviewFormSubmit,
 );
+const newImportPopup = new PopupWithForm(
+  "#new-import-popup",
+  handleImportSubmit,
+);
+const newExportPopup = new PopupWithForm("#new-export-popup", handleExportData);
+
 const propertiesData = StorageService.getProperties(Properties);
 
 /*---------- Función callback para manejar el click en la imagen de la tarjeta ----------*/
@@ -198,7 +204,100 @@ const previewFormValiator = new FormValidator(
   document.querySelector("#new-preview-form"),
 );
 
-// Habilitar validación
+const importFormValidator = new FormValidator(
+  validationConfig,
+  document.querySelector("#new-import-form"),
+);
+
+const exportFormValidator = new FormValidator(
+  validationConfig,
+  document.querySelector("#new-export-form"),
+);
+
+/*--------- Habilitar validación -----------*/
 
 cardFormValidator.enableValidation();
 previewFormValiator.enableValidation();
+importFormValidator.enableValidation();
+exportFormValidator.enableValidation();
+
+/*---------- Backup / Restore localStoreage ---------*/
+
+const storageExport = document.querySelector(".nav__list-link__export");
+storageExport.addEventListener("click", () => {
+  newExportPopup.open();
+});
+
+const storeageImport = document.querySelector(".nav__list-link__import");
+storeageImport.addEventListener("click", () => {
+  newImportPopup.open();
+});
+
+function handleExportData() {
+  const exportFileName = document.querySelector(
+    ".popup__input_type_file-export",
+  );
+
+  const data = {
+    properties: JSON.parse(localStorage.getItem("properties") || "[]"),
+    publishedMaxId: Number(localStorage.getItem("publishedMaxId") || 0),
+  };
+
+  const blob = new Blob([JSON.stringify(data, null, 2)], {
+    type: "application/json",
+  });
+
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+
+  // const fileName = prompt("Nombre del archivo:", "backup") || "backup";
+  const fileName = exportFileName.value || "backup";
+  a.download = `${fileName}.json`;
+
+  a.click();
+
+  URL.revokeObjectURL(url);
+  newExportPopup.close();
+}
+
+function handleImportSubmit() {
+  const fileInput = document.querySelector(".popup__input_type_file-import");
+  const file = fileInput.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    try {
+      const data = JSON.parse(e.target.result);
+
+      if (Array.isArray(data.properties)) {
+        localStorage.setItem("properties", JSON.stringify(data.properties));
+      }
+
+      if (typeof data.publishedMaxId === "number") {
+        localStorage.setItem("publishedMaxId", String(data.publishedMaxId));
+      }
+
+      alert("Respaldo cargado correctamente");
+      location.reload();
+    } catch (err) {
+      alert("Archivo inválido");
+    }
+  };
+
+  reader.readAsText(file);
+  newImportPopup.close();
+}
+
+function setFocus() {
+  const cardListFocus = document.querySelector(".cards__list");
+  const cardFocus = cardListFocus.lastElementChild;
+  const cardFocusWhats = cardFocus.querySelector(".card__whatsapp-button");
+  cardFocusWhats.focus();
+}
+
+setFocus();
+// debugger;
