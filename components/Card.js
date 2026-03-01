@@ -116,7 +116,7 @@ class Card {
 
     const cardImage = this._cardElement.querySelector(".card__image");
     cardImage.src = this._hero;
-    cardImage.alt = this._title;
+    cardImage.alt = this._hero;
 
     const cardPrice = this._cardElement.querySelector(".card__price");
     cardPrice.textContent = this._price;
