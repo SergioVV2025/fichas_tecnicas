@@ -109,12 +109,6 @@ function fillPreview(previewData) {
           Contactar por WhatsApp
         </a>
       </div>
-      <div class="property__agent">
-        <div class="property__agent-broker">&nbsp;Carolina Guerrero</div>
-        <div class="property__agent-phone">
-          <a class="property__agent-number" href="tel:5522425840">&nbsp;55 2242 5840</a>
-        </div>
-      </div>
       <div>
       <p class="property__location-label">${address}</p>
         <a
