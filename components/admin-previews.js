@@ -34,7 +34,7 @@ function fillPreview(previewData) {
   }
 
   // Ahora el preview vive dentro de /previews/
-  const previewUrl = `${baseUrl}previews/propiedad${id}${time}_preview.html`;
+  const previewUrl = `${baseUrl}previews/propiedad${id}${time}_previewSNT.html`;
 
   const featuresHtml = featuresList
     .map((f) => `<li class="property__feature">${f.trim()}</li>`)
@@ -169,7 +169,7 @@ function fillPreview(previewData) {
 
   a.href = URL.createObjectURL(blob);
 
-  a.download = `propiedad${id}${time}_preview.html`;
+  a.download = `propiedad${id}${time}_previewSNT.html`;
   a.click();
 }
 
