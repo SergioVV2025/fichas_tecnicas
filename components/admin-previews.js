@@ -50,7 +50,21 @@ function fillPreview(previewData) {
   }
   const mapLink = getMapLink();
 
-  const htmlContent = `<!doctype html>
+  function getAgentBlock(showAgent) {
+    if (!showAgent) return "";
+
+    return `
+  <div class="property__agent">
+    <div class="property__agent-broker">&nbsp;Carolina Guerrero</div>
+    <div class="property__agent-phone">
+      <a class="property__agent-number" href="tel:5522425840">&nbsp;55 2242 5840</a>
+    </div>
+  </div>
+  `;
+  }
+
+  function generateHTML(showAgent) {
+    return `<!doctype html>
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
@@ -109,12 +123,7 @@ function fillPreview(previewData) {
           Contactar por WhatsApp
         </a>
       </div>
-      <!-- <div class="property__agent">
-        <div class="property__agent-broker">&nbsp;Carolina Guerrero</div>
-        <div class="property__agent-phone">
-          <a class="property__agent-number" href="tel:5522425840">&nbsp;55 2242 5840</a>
-        </div>
-      </div> -->
+        ${getAgentBlock(showAgent)}
       <div>
       <p class="property__location-label">${address}</p>
         <a
@@ -167,16 +176,32 @@ function fillPreview(previewData) {
 
 </body>
 </html>`;
-
-  const blob = new Blob([htmlContent], { type: "text/html" });
-  const a = document.createElement("a");
+  }
 
   StorageService.setMaxPublishedId(id);
 
-  a.href = URL.createObjectURL(blob);
+  const htmlWithAgent = generateHTML(true);
+  const htmlWithoutAgent = generateHTML(false);
 
-  a.download = `propiedad${id}${time}_preview.html`;
+  downloadHTML(`propiedad${id}${time}_preview.html`, htmlWithAgent);
+  setTimeout(() => {
+    downloadHTML(`propiedad${id}${time}_preview_SNT.html`, htmlWithoutAgent);
+  }, 200);
+}
+
+function downloadHTML(filename, content) {
+  const blob = new Blob([content], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+
+  document.body.appendChild(a);
   a.click();
+  document.body.removeChild(a);
+
+  URL.revokeObjectURL(url);
 }
 
 export { fillPreview };
