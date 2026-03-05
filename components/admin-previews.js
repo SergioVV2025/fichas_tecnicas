@@ -186,7 +186,7 @@ function fillPreview(previewData) {
   downloadHTML(`propiedad${id}${time}_preview.html`, htmlWithAgent);
   setTimeout(() => {
     downloadHTML(`propiedad${id}${time}_preview_SNT.html`, htmlWithoutAgent);
-  }, 200);
+  }, 800);
 }
 
 function downloadHTML(filename, content) {
