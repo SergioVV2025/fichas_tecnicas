@@ -34,7 +34,7 @@ function fillPreview(previewData) {
   }
 
   // Ahora el preview vive dentro de /previews/
-  const previewUrl = `${baseUrl}previews/propiedad${id}${time}_previewSNT.html`;
+  const previewUrl = `${baseUrl}previews/propiedad${id}${time}_preview.html`;
 
   const featuresHtml = featuresList
     .map((f) => `<li class="property__feature">${f.trim()}</li>`)
@@ -109,6 +109,12 @@ function fillPreview(previewData) {
           Contactar por WhatsApp
         </a>
       </div>
+      <!-- <div class="property__agent">
+        <div class="property__agent-broker">&nbsp;Carolina Guerrero</div>
+        <div class="property__agent-phone">
+          <a class="property__agent-number" href="tel:5522425840">&nbsp;55 2242 5840</a>
+        </div>
+      </div> -->
       <div>
       <p class="property__location-label">${address}</p>
         <a
@@ -169,7 +175,7 @@ function fillPreview(previewData) {
 
   a.href = URL.createObjectURL(blob);
 
-  a.download = `propiedad${id}${time}_previewSNT.html`;
+  a.download = `propiedad${id}${time}_preview.html`;
   a.click();
 }
 
