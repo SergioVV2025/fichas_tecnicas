@@ -23,6 +23,10 @@ const newConfirmationPopup = new PopupWithConfirmation(
   "#new-confirmation-popup",
   handleConfirmationPopup,
 );
+const newDeletePopup = new PopupWithConfirmation(
+  "#new-confirmation-popup",
+  handleDeletePopup,
+);
 
 const propertiesData = StorageService.getProperties(Properties);
 
@@ -51,6 +55,7 @@ function renderCard(item) {
     "#card-template",
     handleCardClick,
     newConfirmationPopup,
+    newDeletePopup,
   );
   // const newCard = new Card(item, "#card-template");
 
@@ -98,6 +103,7 @@ function handleCardFormSubmit(formData) {
     "#card-template",
     handleCardClick,
     newConfirmationPopup,
+    newDeletePopup,
   );
   const cardElement = card.generateCard();
   section.addItem(cardElement);
@@ -318,7 +324,12 @@ setFocus();
 
 /*----------- Confirmation Popup -----------*/
 
-function handleConfirmationPopup(id, event, like) {
+function handleConfirmationPopup(id, event, like, cardLikeButton) {
   like(event);
   newConfirmationPopup.close();
+}
+
+function handleDeletePopup(id, event, like, cardDeleteButton) {
+  cardDeleteButton.closest(".card").remove();
+  StorageService.deleteProperty(id);
 }
