@@ -17,8 +17,9 @@ class Card {
     this._isLiked = false;
   }
 
-  _like() {
-    this._isLiked = !this._isLiked;
+  _like(evt) {
+    evt.target.classList.toggle("card__like-button_is-active");
+    // this._isLiked = !this._isLiked;
     // this._isLiked
     //   ? alert("You liked the song!")
     //   : alert("You unliked the song!");
@@ -43,9 +44,7 @@ class Card {
     const cardLikeButton =
       this._cardElement.querySelector(".card__like-button");
     cardLikeButton.addEventListener("click", (evt) => {
-      evt.target.classList.toggle("card__like-button_is-active");
-      // this._like();
-      this._confirmationPopup.open();
+      this._confirmationPopup.open(this._id, evt, this._like);
     });
 
     const cardDeleteButton = this._cardElement.querySelector(

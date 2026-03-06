@@ -6,11 +6,12 @@ class PopupWithConfirmation extends Popup {
     this._handleFormSubmit = handleFormSubmit;
   }
 
-  open(id, cardButton) {
+  open(id, evt, like) {
     this._popup.classList.add("popup_is-opened");
     document.addEventListener("keydown", this._handleEscClose);
     this._id = id;
-    this._cardButton = cardButton;
+    this._evt = evt;
+    this._like = like;
   }
 
   setEventListeners() {
@@ -19,7 +20,7 @@ class PopupWithConfirmation extends Popup {
       .querySelector(".popup__form")
       .addEventListener("submit", (evt) => {
         evt.preventDefault();
-        this._handleFormSubmit(this._id, this._cardButton);
+        this._handleFormSubmit(this._id, this._evt, this._like);
         super.close();
       });
   }

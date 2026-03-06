@@ -318,6 +318,7 @@ setFocus();
 
 /*----------- Confirmation Popup -----------*/
 
-function handleConfirmationPopup(id, cardButton) {
-  alert("ConfirmationPopup!!");
+function handleConfirmationPopup(id, event, like) {
+  like(event);
+  newConfirmationPopup.close();
 }
