@@ -1,6 +1,6 @@
 import Property from "./Property.js";
-import Properties from "./Properties.js";
-import StorageService from "./StorageService.js";
+import Properties from "../components/Properties.js";
+import StorageService from "../components/StorageService.js";
 
 let property;
 const btnConfig = {
