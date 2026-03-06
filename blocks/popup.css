@@ -72,6 +72,10 @@
   padding: 34px 36px;
 }
 
+.popup__content_confirmation {
+  min-height: 205px;
+}
+
 .preview {
   max-width: 1000px;
   width: 100%;

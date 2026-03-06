@@ -1,7 +1,7 @@
 import StorageService from "./StorageService.js";
 
 class Card {
-  constructor(data, cardSelector, handleCardClick) {
+  constructor(data, cardSelector, handleCardClick, confirmationPopup) {
     this._id = data.id;
     this._hero = data.hero;
     this._title = data.title;
@@ -13,6 +13,7 @@ class Card {
     this._address = data.address;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
+    this._confirmationPopup = confirmationPopup;
     this._isLiked = false;
   }
 
@@ -43,7 +44,8 @@ class Card {
       this._cardElement.querySelector(".card__like-button");
     cardLikeButton.addEventListener("click", (evt) => {
       evt.target.classList.toggle("card__like-button_is-active");
-      this._like();
+      // this._like();
+      this._confirmationPopup.open();
     });
 
     const cardDeleteButton = this._cardElement.querySelector(

@@ -4,6 +4,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import Properties from "../components/Properties.js";
 import StorageService from "../components/StorageService.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import { fillPreview } from "../components/admin-previews.js";
 
 /*---------- Instancias de Popups ----------*/
@@ -18,6 +19,10 @@ const newImportPopup = new PopupWithForm(
   handleImportSubmit,
 );
 const newExportPopup = new PopupWithForm("#new-export-popup", handleExportData);
+const newConfirmationPopup = new PopupWithConfirmation(
+  "#new-confirmation-popup",
+  handleConfirmationPopup,
+);
 
 const propertiesData = StorageService.getProperties(Properties);
 
@@ -41,7 +46,12 @@ const handleCardClick = (id, time) => {
 /*---------- Initial Properties en properties.js ----------*/
 
 function renderCard(item) {
-  const newCard = new Card(item, "#card-template", handleCardClick);
+  const newCard = new Card(
+    item,
+    "#card-template",
+    handleCardClick,
+    newConfirmationPopup,
+  );
   // const newCard = new Card(item, "#card-template");
 
   const cardElement = newCard.generateCard();
@@ -83,7 +93,12 @@ function handleCardFormSubmit(formData) {
     address: formData.address,
   };
 
-  const card = new Card(newProperty, "#card-template", handleCardClick);
+  const card = new Card(
+    newProperty,
+    "#card-template",
+    handleCardClick,
+    newConfirmationPopup,
+  );
   const cardElement = card.generateCard();
   section.addItem(cardElement);
 
@@ -300,3 +315,9 @@ function setFocus() {
 }
 
 setFocus();
+
+/*----------- Confirmation Popup -----------*/
+
+function handleConfirmationPopup(id, cardButton) {
+  alert("ConfirmationPopup!!");
+}
