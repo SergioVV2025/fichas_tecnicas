@@ -17,19 +17,17 @@ class Card {
     this._gallery = data.gallery;
     this._time = data.time;
     this._address = data.address;
+    this._isLiked = false;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._confirmationPopup = confirmationPopup;
     this._deletePopup = deletePopup;
-    this._isLiked = false;
+    alert(this._isLiked + " - Ini");
   }
 
-  _like(evt) {
+  _like(evt, isLiked) {
     evt.target.classList.toggle("card__like-button_is-active");
-    // this._isLiked = !this._isLiked;
-    // this._isLiked
-    //   ? alert("You liked the song!")
-    //   : alert("You unliked the song!");
+    isLiked = !isLiked;
   }
 
   _getTemplate() {
@@ -51,7 +49,14 @@ class Card {
     const cardLikeButton =
       this._cardElement.querySelector(".card__like-button");
     cardLikeButton.addEventListener("click", (evt) => {
-      this._confirmationPopup.open(this._id, evt, this._like, cardLikeButton);
+      alert(this._isLiked + " - Ok");
+      this._confirmationPopup.open(
+        this._id,
+        evt,
+        this._like,
+        cardLikeButton,
+        this._isLiked,
+      );
     });
 
     const cardDeleteButton = this._cardElement.querySelector(
@@ -59,9 +64,13 @@ class Card {
     );
     cardDeleteButton.addEventListener("click", (evt) => {
       if (this._id !== 0) {
-        this._deletePopup.open(this._id, evt, this._like, cardDeleteButton);
-        // cardDeleteButton.closest(".card").remove();
-        // StorageService.deleteProperty(this._id);
+        this._deletePopup.open(
+          this._id,
+          evt,
+          this._like,
+          cardDeleteButton,
+          this._isLiked,
+        );
       }
     });
 

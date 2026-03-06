@@ -324,8 +324,8 @@ setFocus();
 
 /*----------- Confirmation Popup -----------*/
 
-function handleConfirmationPopup(id, event, like, cardLikeButton) {
-  like(event);
+function handleConfirmationPopup(id, event, like, cardLikeButton, isLiked) {
+  like(event, isLiked);
   newConfirmationPopup.close();
 }
 
