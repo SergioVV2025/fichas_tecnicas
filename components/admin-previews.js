@@ -54,6 +54,11 @@ function fillPreview(previewData) {
     if (!showAgent) return "";
 
     return `
+  <div class="property__cta">
+    <a class="property__cta-button" href="https://wa.me/5215522425840?text=${encodeURIComponent(`Hola, estoy interesado en la propiedad "${title}".\n¿Podrías darme más información?`)}" target="_blank  ">
+      Contactar por WhatsApp
+    </a>
+  </div>
   <div class="property__agent">
     <div class="property__agent-broker">&nbsp;Carolina Guerrero</div>
     <div class="property__agent-phone">
@@ -117,11 +122,6 @@ function fillPreview(previewData) {
       </div>
       <div class="property__counter" id="imageCounter">
         1 / 1
-      </div>
-      <div class="property__cta">
-        <a class="property__cta-button" href="https://wa.me/5215522425840?text=${encodeURIComponent(`Hola, estoy interesado en la propiedad "${title}".\n¿Podrías darme más información?`)}" target="_blank  ">
-          Contactar por WhatsApp
-        </a>
       </div>
         ${getAgentBlock(showAgent)}
       <div>
