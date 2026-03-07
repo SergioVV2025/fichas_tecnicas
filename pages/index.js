@@ -19,10 +19,10 @@ const newImportPopup = new PopupWithForm(
   handleImportSubmit,
 );
 const newExportPopup = new PopupWithForm("#new-export-popup", handleExportData);
-// const newConfirmationPopup = new PopupWithConfirmation(
-//   "#new-confirmation-popup",
-//   handleConfirmationPopup,
-// );
+const newConfirmationPopup = new PopupWithConfirmation(
+  "#new-confirmation-popup",
+  handleConfirmationPopup,
+);
 const newDeletePopup = new PopupWithConfirmation(
   "#new-confirmation-popup",
   handleDeletePopup,
@@ -54,6 +54,7 @@ function renderCard(item) {
     item,
     "#card-template",
     handleCardClick,
+    newConfirmationPopup,
     newDeletePopup,
   );
 
@@ -64,7 +65,6 @@ function renderCard(item) {
 
 const section = new Section(
   {
-    // items: Properties,
     items: propertiesData,
     renderer: renderCard,
   },
@@ -101,6 +101,7 @@ function handleCardFormSubmit(formData) {
     newProperty,
     "#card-template",
     handleCardClick,
+    newConfirmationPopup,
     newDeletePopup,
   );
   const cardElement = card.generateCard();
@@ -327,12 +328,13 @@ setFocus();
 
 /*----------- Confirmation Popup -----------*/
 
-// function handleConfirmationPopup(id, event, like, cardLikeButton, isLiked) {
-//   like(id, event, isLiked);
-//   newConfirmationPopup.close();
-// }
+function handleConfirmationPopup(id, event, cardLikeButton) {
+  event.target.classList.toggle("card__like-button_is-active");
+  StorageService.toggleIsLiked(id);
+  newConfirmationPopup.close();
+}
 
-function handleDeletePopup(id, event, like, cardDeleteButton) {
+function handleDeletePopup(id, event, cardDeleteButton) {
   cardDeleteButton.closest(".card").remove();
   StorageService.deleteProperty(id);
 }

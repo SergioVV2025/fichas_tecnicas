@@ -1,7 +1,13 @@
 import StorageService from "./StorageService.js";
 
 class Card {
-  constructor(data, cardSelector, handleCardClick, deletePopup) {
+  constructor(
+    data,
+    cardSelector,
+    handleCardClick,
+    confirmationPopup,
+    deletePopup,
+  ) {
     this._id = data.id;
     this._hero = data.hero;
     this._title = data.title;
@@ -14,17 +20,12 @@ class Card {
     this._isLiked = data.isLiked;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
-    // this._confirmationPopup = confirmationPopup;
+    this._confirmationPopup = confirmationPopup;
     this._deletePopup = deletePopup;
   }
 
-  _like(evt) {
-    evt.target.classList.toggle("card__like-button_is-active");
-    StorageService.toggleIsLiked(this._id);
-    // this._isLiked = !JSON.parse(this._isLiked);
-    // this._isLiked === true
-    //   ? alert("isLiked - " + this._isLiked)
-    //   : alert("isLiked - " + this._isLiked);
+  _like(evt, cardLikeButton) {
+    this._confirmationPopup.open(this._id, evt, cardLikeButton);
   }
 
   _getTemplate() {
@@ -46,7 +47,7 @@ class Card {
     const cardLikeButton =
       this._cardElement.querySelector(".card__like-button");
     cardLikeButton.addEventListener("click", (evt) => {
-      this._like(evt);
+      this._like(evt, cardLikeButton);
     });
 
     const cardDeleteButton = this._cardElement.querySelector(
@@ -54,13 +55,7 @@ class Card {
     );
     cardDeleteButton.addEventListener("click", (evt) => {
       if (this._id !== 0) {
-        this._deletePopup.open(
-          this._id,
-          evt,
-          this._like,
-          cardDeleteButton,
-          this._isLiked,
-        );
+        this._deletePopup.open(this._id, evt, cardDeleteButton);
       }
     });
 

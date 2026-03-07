@@ -36,13 +36,11 @@ class StorageService {
 
   static toggleIsLiked(id) {
     const properties = this.getProperties([]);
-
     const property = properties.find((p) => Number(p.id) === Number(id));
 
     if (!property) return;
 
     property.isLiked = !property.isLiked;
-
     this.saveProperties(properties);
   }
 
