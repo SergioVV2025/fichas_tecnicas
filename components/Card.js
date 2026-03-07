@@ -17,17 +17,20 @@ class Card {
     this._gallery = data.gallery;
     this._time = data.time;
     this._address = data.address;
-    this._isLiked = false;
+    this._isLiked = data.isLiked;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._confirmationPopup = confirmationPopup;
     this._deletePopup = deletePopup;
-    alert(this._isLiked + " - Ini");
   }
 
-  _like(evt, isLiked) {
+  _like(evt) {
     evt.target.classList.toggle("card__like-button_is-active");
-    isLiked = !isLiked;
+    StorageService.toggleIsLiked(this._id);
+    // this._isLiked = !JSON.parse(this._isLiked);
+    // this._isLiked === true
+    //   ? alert("isLiked - " + this._isLiked)
+    //   : alert("isLiked - " + this._isLiked);
   }
 
   _getTemplate() {
@@ -49,14 +52,7 @@ class Card {
     const cardLikeButton =
       this._cardElement.querySelector(".card__like-button");
     cardLikeButton.addEventListener("click", (evt) => {
-      alert(this._isLiked + " - Ok");
-      this._confirmationPopup.open(
-        this._id,
-        evt,
-        this._like,
-        cardLikeButton,
-        this._isLiked,
-      );
+      this._like(evt);
     });
 
     const cardDeleteButton = this._cardElement.querySelector(
@@ -99,7 +95,6 @@ class Card {
       window.open(whatsappUrl, "_blank");
     });
 
-    // const priceInput = document.forms["new-card-form"]["price"];
     const priceInput = document.querySelector(".popup__input_type_card-price");
     const pattern = /\d/;
     let caracter = "";
@@ -164,6 +159,11 @@ class Card {
 
     const cardAddress = this._cardElement.querySelector(".card__address");
     cardAddress.textContent = this._address;
+
+    const cardIsLiked = this._cardElement.querySelector(".card__like-button");
+    this._isLiked === true
+      ? cardIsLiked.classList.add("card__like-button_is-active")
+      : cardIsLiked.classList.remove("card__like-button_is-active");
 
     this._setEventListeners();
 

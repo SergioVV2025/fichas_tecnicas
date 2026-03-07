@@ -38,7 +38,8 @@
       ],
       "time": "172419",
       "theme": "theme-modern",
-      "address": "Satori Santa Fe Living"
+      "address": "Satori Santa Fe Living",
+      "isLiked": "false"
     },
     {
       "id": 2,
@@ -80,7 +81,8 @@
       ],
       "time": "193454",
       "theme": "theme-modern",
-      "address": "Satori Santa Fe Living"
+      "address": "Satori Santa Fe Living",
+      "isLiked": "false"
     },
     {
       "id": 3,
@@ -128,8 +130,46 @@
       ],
       "time": "122256",
       "theme": "theme-modern",
-      "address": "Argenta Towers, Bosque Real"
+      "address": "Argenta Towers, Bosque Real",
+      "isLiked": "false"
+    },
+    {
+      "id": 4,
+      "hero": "./images/caroProp4_hero.jpg",
+      "title": "Loft en venta en City Blue, Santa Fe",
+      "price": "4,300,000.00 MXN",
+      "description": "Frente a la Universidad Iberoamericana.",
+      "features": "50m²\n1 cajón de estacionamiento\n1 baño\nAlberca\nGym\nRestaurante\nPadel\nSalón de eventos\nCine\nSauna\nVapor\nSalón inglés",
+      "gallery": [
+        "./images/caroProp4_1.jpg",
+        "./images/caroProp4_2.jpg",
+        "./images/caroProp4_3.jpg",
+        "./images/caroProp4_4.jpg",
+        "./images/caroProp4_5.jpg",
+        "./images/caroProp4_6.jpg",
+        "./images/caroProp4_7.jpg",
+        "./images/caroProp4_8.jpg",
+        "./images/caroProp4_9.jpg",
+        "./images/caroProp4_10.jpg",
+        "./images/caroProp4_11.jpg",
+        "./images/caroProp4_12.jpg",
+        "./images/caroProp4_13.jpg",
+        "./images/caroProp4_14.jpg",
+        "./images/caroProp4_15.jpg",
+        "./images/caroProp4_16.jpg",
+        "./images/caroProp4_17.jpg",
+        "./images/caroProp4_18.jpg",
+        "./images/caroProp4_19.jpg",
+        "./images/caroProp4_20.jpg",
+        "./images/caroProp4_22.jpg",
+        "./images/caroProp4_23.jpg",
+        "./images/caroProp4_24.jpg"
+      ],
+      "time": "144103",
+      "theme": "theme-modern",
+      "address": "City Blue, Santa Fe",
+      "isLiked": "false"
     }
   ],
-  "publishedMaxId": 3
+  "publishedMaxId": 4
 }

@@ -19,10 +19,10 @@ const newImportPopup = new PopupWithForm(
   handleImportSubmit,
 );
 const newExportPopup = new PopupWithForm("#new-export-popup", handleExportData);
-const newConfirmationPopup = new PopupWithConfirmation(
-  "#new-confirmation-popup",
-  handleConfirmationPopup,
-);
+// const newConfirmationPopup = new PopupWithConfirmation(
+//   "#new-confirmation-popup",
+//   handleConfirmationPopup,
+// );
 const newDeletePopup = new PopupWithConfirmation(
   "#new-confirmation-popup",
   handleDeletePopup,
@@ -54,10 +54,9 @@ function renderCard(item) {
     item,
     "#card-template",
     handleCardClick,
-    newConfirmationPopup,
+    // newConfirmationPopup,
     newDeletePopup,
   );
-  // const newCard = new Card(item, "#card-template");
 
   const cardElement = newCard.generateCard();
 
@@ -96,13 +95,14 @@ function handleCardFormSubmit(formData) {
     time: formData.time,
     theme: formData.theme,
     address: formData.address,
+    isLiked: false,
   };
 
   const card = new Card(
     newProperty,
     "#card-template",
     handleCardClick,
-    newConfirmationPopup,
+    // newConfirmationPopup,
     newDeletePopup,
   );
   const cardElement = card.generateCard();
@@ -295,7 +295,12 @@ function handleImportSubmit() {
       const data = JSON.parse(e.target.result);
 
       if (Array.isArray(data.properties)) {
-        localStorage.setItem("properties", JSON.stringify(data.properties));
+        const normalized = data.properties.map((p) => ({
+          ...p,
+          isLiked: p.isLiked ?? false,
+        }));
+
+        localStorage.setItem("properties", JSON.stringify(normalized));
       }
 
       if (typeof data.publishedMaxId === "number") {
@@ -324,10 +329,10 @@ setFocus();
 
 /*----------- Confirmation Popup -----------*/
 
-function handleConfirmationPopup(id, event, like, cardLikeButton, isLiked) {
-  like(event, isLiked);
-  newConfirmationPopup.close();
-}
+// function handleConfirmationPopup(id, event, like, cardLikeButton, isLiked) {
+//   like(id, event, isLiked);
+//   newConfirmationPopup.close();
+// }
 
 function handleDeletePopup(id, event, like, cardDeleteButton) {
   cardDeleteButton.closest(".card").remove();

@@ -15,6 +15,7 @@ const Properties = [
       "./images/jardinMuestra.jpg",
     ],
     address: "Ubicación",
+    isLiked: "false",
   },
 ];
 

@@ -38,7 +38,8 @@
       ],
       "time": "172419",
       "theme": "theme-modern",
-      "address": "Satori Santa Fe Living"
+      "address": "Satori Santa Fe Living",
+      "isLiked": true
     },
     {
       "id": 2,
@@ -80,7 +81,8 @@
       ],
       "time": "193454",
       "theme": "theme-modern",
-      "address": "Satori Santa Fe Living"
+      "address": "Satori Santa Fe Living",
+      "isLiked": true
     },
     {
       "id": 3,
@@ -128,7 +130,8 @@
       ],
       "time": "122256",
       "theme": "theme-modern",
-      "address": "Argenta Towers, Bosque Real"
+      "address": "Argenta Towers, Bosque Real",
+      "isLiked": false
     },
     {
       "id": 4,
@@ -164,7 +167,8 @@
       ],
       "time": "144103",
       "theme": "theme-modern",
-      "address": "City Blue, Santa Fe"
+      "address": "City Blue, Santa Fe",
+      "isLiked": false
     }
   ],
   "publishedMaxId": 4
