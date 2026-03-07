@@ -54,7 +54,6 @@ function renderCard(item) {
     item,
     "#card-template",
     handleCardClick,
-    // newConfirmationPopup,
     newDeletePopup,
   );
 
@@ -102,7 +101,6 @@ function handleCardFormSubmit(formData) {
     newProperty,
     "#card-template",
     handleCardClick,
-    // newConfirmationPopup,
     newDeletePopup,
   );
   const cardElement = card.generateCard();

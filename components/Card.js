@@ -1,13 +1,7 @@
 import StorageService from "./StorageService.js";
 
 class Card {
-  constructor(
-    data,
-    cardSelector,
-    handleCardClick,
-    confirmationPopup,
-    deletePopup,
-  ) {
+  constructor(data, cardSelector, handleCardClick, deletePopup) {
     this._id = data.id;
     this._hero = data.hero;
     this._title = data.title;
@@ -20,7 +14,7 @@ class Card {
     this._isLiked = data.isLiked;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
-    this._confirmationPopup = confirmationPopup;
+    // this._confirmationPopup = confirmationPopup;
     this._deletePopup = deletePopup;
   }
 
