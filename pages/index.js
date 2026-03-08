@@ -28,6 +28,8 @@ const newDeletePopup = new PopupWithConfirmation(
   handleDeletePopup,
 );
 
+const newEditPopup = new PopupWithForm("#new-card-popup", handleCardFormSubmit);
+
 const propertiesData = StorageService.getProperties(Properties);
 
 /*---------- Función callback para manejar el click en la imagen de la tarjeta ----------*/
@@ -56,6 +58,7 @@ function renderCard(item) {
     handleCardClick,
     newConfirmationPopup,
     newDeletePopup,
+    handleEditClick,
   );
 
   const cardElement = newCard.generateCard();
@@ -77,45 +80,56 @@ section.renderItems();
 
 const profileAddButton = document.querySelector(".nav__list-link__card");
 profileAddButton.addEventListener("click", () => {
+  const cardSubmitButton = document.forms["new-card-form"]["popup__button"];
+  cardSubmitButton.textContent = "Crear";
   newCardPopup.open();
 });
 
 const saveCardForm = document.querySelector("#new-card-form");
 function handleCardFormSubmit(formData) {
-  const newId = StorageService.getNextId();
-  const newProperty = {
-    id: newId,
-    hero: formData.hero,
-    title: formData.title,
-    price: formData.price,
-    description: formData.description,
-    features: formData.features,
-    gallery: formData.gallery,
-    time: formData.time,
-    theme: formData.theme,
-    address: formData.address,
-    isLiked: false,
-  };
+  if (currentEditingId) {
+    const properties = StorageService.getProperties([]);
 
-  const card = new Card(
-    newProperty,
-    "#card-template",
-    handleCardClick,
-    newConfirmationPopup,
-    newDeletePopup,
-  );
-  const cardElement = card.generateCard();
-  section.addItem(cardElement);
+    const property = properties.find(
+      (p) => Number(p.id) === Number(currentEditingId),
+    );
+    Object.assign(property, formData);
 
-  StorageService.addProperty(newProperty);
-
-  /*--- Deshabilitar botón "Crear" y limpiar formulario ---*/
-
-  const newCardSubmitButton = saveCardForm.querySelector(".popup__button");
-  newCardSubmitButton.disabled = true;
-  saveCardForm.reset();
-
-  newCardPopup.close();
+    StorageService.saveProperties(properties);
+    // saveCardForm.reset();
+    location.reload();
+  } else {
+    const newId = StorageService.getNextId();
+    const newProperty = {
+      id: newId,
+      hero: formData.hero,
+      title: formData.title,
+      price: formData.price,
+      description: formData.description,
+      features: formData.features,
+      gallery: formData.gallery,
+      time: formData.time,
+      theme: formData.theme,
+      address: formData.address,
+      isLiked: false,
+    };
+    const card = new Card(
+      newProperty,
+      "#card-template",
+      handleCardClick,
+      newConfirmationPopup,
+      newDeletePopup,
+      handleEditClick,
+    );
+    const cardElement = card.generateCard();
+    section.addItem(cardElement);
+    StorageService.addProperty(newProperty);
+    /*--- Deshabilitar botón "Crear" y limpiar formulario ---*/
+    const newCardSubmitButton = saveCardForm.querySelector(".popup__button");
+    newCardSubmitButton.disabled = true;
+    saveCardForm.reset();
+    newCardPopup.close();
+  }
 }
 
 /*---------- Formulario de Previews ----------*/
@@ -272,7 +286,6 @@ function handleExportData() {
   const a = document.createElement("a");
   a.href = url;
 
-  // const fileName = prompt("Nombre del archivo:", "backup") || "backup";
   const fileName = exportFileName.value || "backup";
   a.download = `${fileName}.json`;
 
@@ -334,7 +347,50 @@ function handleConfirmationPopup(id, event, cardLikeButton) {
   newConfirmationPopup.close();
 }
 
+/*------------ Delete Popup --------------*/
+
 function handleDeletePopup(id, event, cardDeleteButton) {
   cardDeleteButton.closest(".card").remove();
   StorageService.deleteProperty(id);
+}
+
+/*------------- Edit Popup --------------*/
+
+let currentEditingId;
+function handleEditClick(data) {
+  currentEditingId = data.id;
+
+  // newEditPopup.setInputValues(data);
+
+  document.querySelector(".popup__input_type_card-hero").value = data.hero;
+
+  document.querySelector(".popup__input_type_card-title").value = data.title;
+
+  document.querySelector(".popup__input_type_card-price").value = data.price;
+
+  document.querySelector(".input__textarea-description").value =
+    data.description;
+
+  document.querySelector(".input__textarea-features").value = Array.isArray(
+    data.features,
+  )
+    ? data.features.join("\n")
+    : data.features;
+
+  document.querySelector(".input__textarea-gallery").value = Array.isArray(
+    data.gallery,
+  )
+    ? data.gallery.join("\n")
+    : "";
+
+  document.querySelector(".popup__input_type_card-address").value =
+    data.address;
+
+  document.querySelector(".popup__input_type_card-theme").value = data.theme;
+
+  document.querySelector(".popup__input_type_card-time").value = data.time;
+
+  const editSubmitButton = document.forms["new-card-form"]["popup__button"];
+  editSubmitButton.textContent = "Guardar";
+  newEditPopup.open();
 }

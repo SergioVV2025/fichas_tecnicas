@@ -69,7 +69,7 @@
   justify-content: center;
   grid-gap: 8px 8px;
   list-style-type: none;
-  margin: 0;
+  margin: 0 0 1rem;
   padding: 0;
   height: 100px;
   overflow: auto;
@@ -83,6 +83,16 @@
   object-position: center center;
 }
 
+.card__address {
+  height: 2rem;
+  overflow: auto;
+  margin: 0;
+}
+
+.card__thema {
+  margin: 0;
+}
+
 .card__bottom_buttons {
   display: flex;
   justify-content: flex-end;
@@ -91,9 +101,40 @@
   margin-top: 10px;
 }
 
-.card__address {
-  height: 2rem;
-  overflow: auto;
+.card__delete-button {
+  width: 18px;
+  height: 18px;
+  background: transparent url("../images/delete-icon.svg") center no-repeat;
+  background-size: 18px 18px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+.card__delete-button:hover {
+  opacity: 0.6;
+}
+
+.card__edit-button {
+  width: 18px;
+  height: 18px;
+  background: transparent url("../images/edit-icon.svg") center no-repeat;
+  background-size: 18px 18px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 44px;
+  right: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+.card__edit-button:hover {
+  opacity: 0.6;
 }
 
 .card__whatsapp-button {
@@ -126,24 +167,6 @@
 .card__like-button:hover {
   opacity: 0.5;
   cursor: pointer;
-}
-
-.card__delete-button {
-  width: 18px;
-  height: 18px;
-  background: transparent url("../images/delete-icon.svg") center no-repeat;
-  background-size: 18px 18px;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: 18px;
-  right: 15px;
-  padding: 0;
-  margin: 0;
-}
-
-.card__delete-button:hover {
-  opacity: 0.6;
 }
 
 .card__like-button_is-active {

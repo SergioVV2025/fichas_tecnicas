@@ -47,7 +47,8 @@ class PopupWithForm extends Popup {
       .querySelector(".popup__form")
       .addEventListener("submit", (evt) => {
         evt.preventDefault();
-        this._handleFormSubmit(this._getInputValues());
+        evt.stopPropagation();
+        this._handleFormSubmit(this._getInputValues(), this._type);
       });
   }
 

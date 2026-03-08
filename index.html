@@ -60,6 +60,11 @@
                   class="card__delete-button"
                   type="button"
                 ></button>
+                <button
+                  aria-label="Edtar tarjeta"
+                  class="card__edit-button"
+                  type="button"
+                ></button>
                 <div class="card__descriptionContainer">
                   <p class="card__id"></p>
                   <p class="card__title"></p>
@@ -70,6 +75,7 @@
                     <!-- Galeria de imagenes -->
                   </div>
                   <p class="card__address"></p>
+                  <p class="card__theme"></p>
                   <div class="card__bottom_buttons">
                     <button
                       aria-label="Botón Whatsapp"
@@ -100,7 +106,6 @@
           ></button>
           <h3 class="popup__title">Nueva propiedad</h3>
           <form class="popup__form" id="new-card-form" name="new-card-form">
-            <span class="popup__error popup__error_id"></span>
             <!-- <label class="input__label">Hero</label> -->
             <input
               class="popup__input popup__input_type_card-hero"
@@ -195,7 +200,12 @@
               required
               type="hidden"
             />
-            <button class="button popup__button" type="submit" disabled>
+            <button
+              class="button popup__button"
+              type="submit"
+              name="popup__button"
+              disabled
+            >
               Crear
             </button>
           </form>

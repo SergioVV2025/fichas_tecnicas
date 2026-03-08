@@ -7,7 +7,9 @@ class Card {
     handleCardClick,
     confirmationPopup,
     deletePopup,
+    handleEdit,
   ) {
+    this._data = data;
     this._id = data.id;
     this._hero = data.hero;
     this._title = data.title;
@@ -17,11 +19,13 @@ class Card {
     this._gallery = data.gallery;
     this._time = data.time;
     this._address = data.address;
+    this._theme = data.theme;
     this._isLiked = data.isLiked;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._confirmationPopup = confirmationPopup;
     this._deletePopup = deletePopup;
+    this._handleEdit = handleEdit;
   }
 
   _like(evt, cardLikeButton) {
@@ -47,6 +51,7 @@ class Card {
     const cardLikeButton =
       this._cardElement.querySelector(".card__like-button");
     cardLikeButton.addEventListener("click", (evt) => {
+      // evt.stopPropagation();
       this._like(evt, cardLikeButton);
     });
 
@@ -54,9 +59,17 @@ class Card {
       ".card__delete-button",
     );
     cardDeleteButton.addEventListener("click", (evt) => {
+      // evt.stopPropagation();
       if (this._id !== 0) {
         this._deletePopup.open(this._id, evt, cardDeleteButton);
       }
+    });
+
+    const cardEditButton =
+      this._cardElement.querySelector(".card__edit-button");
+    cardEditButton.addEventListener("click", (evt) => {
+      evt.stopPropagation();
+      this._handleEdit(this._data);
     });
 
     const cardWhatsappButton = this._cardElement.querySelector(
@@ -148,6 +161,9 @@ class Card {
 
     const cardAddress = this._cardElement.querySelector(".card__address");
     cardAddress.textContent = this._address;
+
+    const cardTheme = this._cardElement.querySelector(".card__theme");
+    cardTheme.textContent = this._theme;
 
     const cardIsLiked = this._cardElement.querySelector(".card__like-button");
     this._isLiked === true
