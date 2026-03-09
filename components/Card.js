@@ -6,7 +6,6 @@ class Card {
     cardSelector,
     handleCardClick,
     confirmationPopup,
-    deletePopup,
     handleEdit,
   ) {
     this._data = data;
@@ -24,12 +23,11 @@ class Card {
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._confirmationPopup = confirmationPopup;
-    this._deletePopup = deletePopup;
     this._handleEdit = handleEdit;
   }
 
   _like(evt, cardLikeButton) {
-    this._confirmationPopup.open(this._id, evt, cardLikeButton);
+    this._confirmationPopup.open(this._id, evt, cardLikeButton, "like");
   }
 
   _getTemplate() {
@@ -61,7 +59,7 @@ class Card {
     cardDeleteButton.addEventListener("click", (evt) => {
       // evt.stopPropagation();
       if (this._id !== 0) {
-        this._deletePopup.open(this._id, evt, cardDeleteButton);
+        this._confirmationPopup.open(this._id, evt, cardDeleteButton, "delete");
       }
     });
 

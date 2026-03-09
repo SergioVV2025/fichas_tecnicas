@@ -23,10 +23,6 @@ const newConfirmationPopup = new PopupWithConfirmation(
   "#new-confirmation-popup",
   handleConfirmationPopup,
 );
-const newDeletePopup = new PopupWithConfirmation(
-  "#new-confirmation-popup",
-  handleDeletePopup,
-);
 
 const newEditPopup = new PopupWithForm("#new-card-popup", handleCardFormSubmit);
 
@@ -57,7 +53,6 @@ function renderCard(item) {
     "#card-template",
     handleCardClick,
     newConfirmationPopup,
-    newDeletePopup,
     handleEditClick,
   );
 
@@ -96,7 +91,6 @@ function handleCardFormSubmit(formData) {
     Object.assign(property, formData);
 
     StorageService.saveProperties(properties);
-    // saveCardForm.reset();
     location.reload();
   } else {
     const newId = StorageService.getNextId();
@@ -118,7 +112,6 @@ function handleCardFormSubmit(formData) {
       "#card-template",
       handleCardClick,
       newConfirmationPopup,
-      newDeletePopup,
       handleEditClick,
     );
     const cardElement = card.generateCard();
@@ -153,7 +146,21 @@ previewInputId.addEventListener("change", () => {
   recoverPropertyInfo(previewId.value);
 });
 
-function recoverPropertyInfo(id) {
+function fillForm(id, form) {
+  let txt = "";
+  const inputList = form.querySelectorAll(".popup__input");
+  const inputListArray = [...inputList];
+  const inputClassNames = inputListArray.map((input) => {
+    txt = input.className.slice(13) + "*" + input.name + "\n";
+    if (txt.startsWith("popup__select")) {
+      txt = txt.slice(14);
+    }
+    if (txt.startsWith("popup__textarea")) {
+      txt = txt.slice(16);
+    }
+    return txt;
+  });
+
   const currentProperty = StorageService.getProperty(id);
 
   if (!currentProperty) {
@@ -161,41 +168,51 @@ function recoverPropertyInfo(id) {
     return;
   }
 
+  let currentPropEntries = [];
+  for (let [prop, value] of Object.entries(currentProperty)) {
+    currentPropEntries[prop] = value;
+  }
+
   const BASE_URL = "https://sergiovv2025.github.io/fichas_tecnicas/";
-
-  document.querySelector(".popup__input_type_property-title").value =
-    currentProperty.title;
-
-  document.querySelector(".input__textarea-descriptionOG").value =
-    currentProperty.description;
-
   const heroPath = currentProperty.hero || "";
-  document.querySelector(".popup__input_type_imageOG").value =
-    BASE_URL + (heroPath.startsWith("./") ? heroPath.slice(2) : heroPath);
+  let splitClassName = [],
+    formInput,
+    inputName,
+    inputClass;
+  inputClassNames.forEach((input) => {
+    splitClassName = input.split("*");
+    inputClass = "." + splitClassName[0].trim();
+    inputName = splitClassName[1].trim();
+    formInput = form.querySelector(inputClass);
 
-  document.querySelector(".popup__input_type_urlProject").value = BASE_URL;
+    if (currentPropEntries[inputName] !== undefined) {
+      formInput.value = currentPropEntries[inputName];
+    }
+    if (inputName === "features") {
+      formInput.value = Array.isArray(currentPropEntries[inputName])
+        ? currentPropEntries[inputName].join("\n")
+        : currentPropEntries[inputName];
+    }
+    if (inputName === "gallery") {
+      formInput.value = Array.isArray(currentPropEntries[inputName])
+        ? currentPropEntries[inputName].join("\n")
+        : "";
+    }
+    if (inputName === "descriptionOG") {
+      formInput.value = currentPropEntries["description"];
+    }
+    if (inputName === "imageOG") {
+      formInput.value =
+        BASE_URL + (heroPath.startsWith("./") ? heroPath.slice(2) : heroPath);
+    }
+    if (inputName === "urlProject") {
+      formInput.value = BASE_URL;
+    }
+  });
+}
 
-  document.querySelector(".popup__input_type_preview-price").value =
-    currentProperty.price;
-
-  document.querySelector(".popup__input_type_preview-features").value =
-    Array.isArray(currentProperty.features)
-      ? currentProperty.features.join("\n")
-      : currentProperty.features;
-
-  document.querySelector(".popup__input_type_preview-gallery").value =
-    Array.isArray(currentProperty.gallery)
-      ? currentProperty.gallery.join("\n")
-      : "";
-
-  document.querySelector(".popup__input_type_preview-time").value =
-    currentProperty.time;
-
-  document.querySelector(".popup__input_type_preview-theme").value =
-    currentProperty.theme;
-
-  document.querySelector(".popup__input_type_preview-address").value =
-    currentProperty.address;
+function recoverPropertyInfo(id) {
+  fillForm(id, newPreviewForm);
 }
 
 function handlePreviewFormSubmit(formData) {
@@ -341,54 +358,29 @@ setFocus();
 
 /*----------- Confirmation Popup -----------*/
 
-function handleConfirmationPopup(id, event, cardLikeButton) {
-  event.target.classList.toggle("card__like-button_is-active");
-  StorageService.toggleIsLiked(id);
-  newConfirmationPopup.close();
+function handleConfirmationPopup(id, event, button, action) {
+  if (action === "like") {
+    event.target.classList.toggle("card__like-button_is-active");
+    StorageService.toggleIsLiked(id);
+  }
+
+  if (action === "delete") {
+    button.closest(".card").remove();
+    StorageService.deleteProperty(id);
+  }
 }
 
 /*------------ Delete Popup --------------*/
 
-function handleDeletePopup(id, event, cardDeleteButton) {
-  cardDeleteButton.closest(".card").remove();
-  StorageService.deleteProperty(id);
-}
+function handleDeletePopup(id, event, cardDeleteButton) {}
 
 /*------------- Edit Popup --------------*/
 
 let currentEditingId;
 function handleEditClick(data) {
   currentEditingId = data.id;
-
-  // newEditPopup.setInputValues(data);
-
-  document.querySelector(".popup__input_type_card-hero").value = data.hero;
-
-  document.querySelector(".popup__input_type_card-title").value = data.title;
-
-  document.querySelector(".popup__input_type_card-price").value = data.price;
-
-  document.querySelector(".input__textarea-description").value =
-    data.description;
-
-  document.querySelector(".input__textarea-features").value = Array.isArray(
-    data.features,
-  )
-    ? data.features.join("\n")
-    : data.features;
-
-  document.querySelector(".input__textarea-gallery").value = Array.isArray(
-    data.gallery,
-  )
-    ? data.gallery.join("\n")
-    : "";
-
-  document.querySelector(".popup__input_type_card-address").value =
-    data.address;
-
-  document.querySelector(".popup__input_type_card-theme").value = data.theme;
-
-  document.querySelector(".popup__input_type_card-time").value = data.time;
+  const newCardForm = document.forms["new-card-form"];
+  fillForm(currentEditingId, newCardForm);
 
   const editSubmitButton = document.forms["new-card-form"]["popup__button"];
   editSubmitButton.textContent = "Guardar";
