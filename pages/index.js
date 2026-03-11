@@ -370,10 +370,6 @@ function handleConfirmationPopup(id, event, button, action) {
   }
 }
 
-/*------------ Delete Popup --------------*/
-
-function handleDeletePopup(id, event, cardDeleteButton) {}
-
 /*------------- Edit Popup --------------*/
 
 let currentEditingId;
