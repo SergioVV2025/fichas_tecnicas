@@ -390,7 +390,11 @@ body {
 .theme-modern .property__image:hover {
   transform: scale(1.25, 1.2);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-  z-index: 1;
+  color: red;
+}
+
+.theme-modern .property__image:hover .property__feature {
+  background: red;
 }
 
 .theme-modern .property__btn {
