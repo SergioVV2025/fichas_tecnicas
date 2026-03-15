@@ -146,8 +146,6 @@ body {
 
 .property__image:hover {
   box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.4);
-  transform: scale(120%);
-  z-index: 1;
 }
 
 .property__btn {
@@ -390,8 +388,9 @@ body {
 }
 
 .theme-modern .property__image:hover {
-  transform: scale(1.015);
+  transform: scale(1.25, 1.2);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  z-index: 1;
 }
 
 .theme-modern .property__btn {
@@ -464,10 +463,15 @@ body {
 .theme-rock .property__image {
   filter: contrast(1.1) saturate(1.1);
   transform: scale(1.02);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .theme-rock .property__image:hover {
+  transform: scale(1.25, 1.2);
   box-shadow: 0px 0px 24px rgba(255, 106, 0, 0.4);
+  z-index: 1;
 }
 
 .theme-rock .property__cta-button {
