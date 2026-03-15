@@ -128,7 +128,7 @@ body {
 /* GALERÍA */
 .property__image-gallery {
   position: relative;
-  width: 80%;
+  width: 75%;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -388,13 +388,8 @@ body {
 }
 
 .theme-modern .property__image:hover {
-  transform: scale(1.25, 1.2);
+  transform: scale(1.015);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-  color: red;
-}
-
-.theme-modern .property__image:hover .property__feature {
-  background: red;
 }
 
 .theme-modern .property__btn {
@@ -467,15 +462,10 @@ body {
 .theme-rock .property__image {
   filter: contrast(1.1) saturate(1.1);
   transform: scale(1.02);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
 }
 
 .theme-rock .property__image:hover {
-  transform: scale(1.25, 1.2);
   box-shadow: 0px 0px 24px rgba(255, 106, 0, 0.4);
-  z-index: 1;
 }
 
 .theme-rock .property__cta-button {
