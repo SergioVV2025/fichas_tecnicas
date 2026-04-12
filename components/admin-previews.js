@@ -8,7 +8,7 @@ function fillPreview(previewData) {
   const baseUrl = previewData.urlProject.trim();
   const price = previewData.price.trim();
   const time = previewData.time.trim();
-  const theme = previewData.theme.trim() || "theme-classic";
+  const theme = previewData.theme.trim() || "theme-modern";
   const address = previewData.address.trim();
 
   // Features puede venir como string o como array

@@ -8,6 +8,10 @@ class Popup {
   open() {
     this._popup.classList.add("popup_is-opened");
     document.addEventListener("keydown", this._handleEscClose);
+    const active = document.activeElement;
+    if (active && active.blur) {
+      active.blur();
+    }
   }
 
   close() {

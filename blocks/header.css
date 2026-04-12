@@ -1,4 +1,4 @@
-.header {
+/* .header {
   font-family: "Inter", Arial, sans-serif;
   position: fixed;
   top: 0;
@@ -16,7 +16,6 @@
 
 .nav__list {
   display: flex;
-  /* justify-content: space-between; */
   list-style-type: none;
   width: 100%;
   margin: 0;
@@ -71,4 +70,62 @@
 .nav__dropdown-content .nav__list-link:hover {
   background-color: #777;
   border-radius: 8px;
+} */
+
+.header {
+  font-family: "Inter", Arial, sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.header__nav {
+  width: 100%;
+  background-color: lightgray;
+  border-radius: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__list {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__list-item .nav__list-link {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  font-size: 1.5em;
+  text-decoration: none;
+  color: black;
+}
+
+/* 👇 ESTE ES EL FIX CLAVE */
+.nav__dropdown {
+  position: relative;
+}
+
+.nav__dropdown-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+
+  background-color: lightgray;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 8px;
+
+  min-width: 150px;
+  z-index: 1100;
+}
+
+/* Hover */
+.nav__dropdown:focus-within .nav__dropdown-content {
+  display: block;
 }
