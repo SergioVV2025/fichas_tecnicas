@@ -117,15 +117,30 @@ class Card {
     });
   }
 
-  _handleLoadError() {
-    alert("Image not loaded. ERROR! ERROR!");
+  // _handleLoadError() {
+  //   this._spinner.classList.add("card__spinner_hidden");
+  //   alert("Image not loaded. ERROR! ERROR!");
+  // }
+
+  _handleLoadError(evt) {
+    this._spinner.classList.remove("card__spinner_visible");
+    alert("Image not loaded. ERROR! ERROR!" + evt.target.src);
   }
 
   _handleImageLoad(evt) {
-    evt.target.append(evt.target);
+    // alert(
+    //   "Image loaded successfully!\n" +
+    //     evt.target.className +
+    //     "\n" +
+    //     evt.target.src,
+    // );
+    this._spinner.classList.remove("card__spinner_visible");
+    evt.target.classList.add("card__image_loaded");
+    console.log("imagen cargada!!!  " + evt.target.src);
   }
 
   _loadImage(imageElement, loadCallback, errorCallback) {
+    this._spinner.classList.add("card__spinner_visible");
     // img.addEventListener("load", loadCallback);
     // img.addEventListener("error", errorCallback);
     imageElement.onload = loadCallback;
@@ -142,6 +157,8 @@ class Card {
 
     const cardTitle = this._cardElement.querySelector(".card__title");
     cardTitle.textContent = this._title;
+
+    this._spinner = this._cardElement.querySelector(".card__spinner");
 
     const cardImage = this._cardElement.querySelector(".card__image");
     // cardImage.src = this._hero;
