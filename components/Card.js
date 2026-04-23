@@ -85,7 +85,7 @@ class Card {
         return;
       }
 
-      const previewUrl = `https://departamentosexclusivosensantafe.github.io/fichas/previews/propiedad${this._id}${this._time}_preview.html`;
+      const previewUrl = `https://sergiovv2025.github.io/fichas_tecnicas/previews/propiedad${this._id}${this._time}_preview.html`;
 
       const message = `Te comparto esta propiedad:\n${previewUrl}`;
 
