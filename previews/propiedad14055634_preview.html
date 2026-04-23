@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>2 - Departamento en renta en Avenida Santa fe, parque La Mexicana, Torre Milán</title>
+
+<link rel="stylesheet" href="../blocks/property.css" />
+
+<meta property="og:title" content="2 - Departamento en renta en Avenida Santa fe, parque La Mexicana, Torre Milán" />
+<meta property="og:description" content="Amueblado: 65000
+Sin amueblar: 55000" />
+<meta property="og:image" content="https://departamentosexclusivosensantafe.github.io/fichas/images/caroProp7_7.jpeg" />
+<meta property="og:url" content="https://departamentosexclusivosensantafe.github.io/fichas/previews/propiedad14055634_preview.html" />
+<meta property="og:type" content="website" />
+
+</head>
+
+<body class="theme-modern">
+  <main class="property">
+
+    <section class="property__content">
+
+      <div class="property__hero-slider">
+        <img class="property__hero-image" src="https://departamentosexclusivosensantafe.github.io/fichas/images/caroProp7_7.jpeg" alt="2 - Departamento en renta en Avenida Santa fe, parque La Mexicana, Torre Milán" />
+
+        <button class="property__btn property__btn-left" id="btnBack">
+          <img class="property__btn_image" src="https://departamentosexclusivosensantafe.github.io/fichas/images/arrow_back.png" alt="Left arrow">
+        </button>
+
+        <button class="property__btn property__btn-right" id="btnForward">
+          <img class="property__btn_image" src="https://departamentosexclusivosensantafe.github.io/fichas/images/arrow_forward.png" alt="Right arrow">
+        </button>
+      </div>
+
+      <div class="property__counter" id="imageCounter">
+        1 / 1
+      </div>
+
+      <div>
+        <h1 class="property__title">2 - Departamento en renta en Avenida Santa fe, parque La Mexicana, Torre Milán</h1>
+        <p class="property__price">123,456.00 MXN</p>
+      </div>
+
+      <div>
+        <ul class="property__features-list">
+          <li class="property__feature">190m2</li><li class="property__feature">3 Recámaras</li><li class="property__feature">3 Baños completos</li><li class="property__feature">2 Estacionamientos</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="property__description">Amueblado: 65000
+Sin amueblar: 55000</p>
+      </div>
+        
+  <div class="property__cta">
+    <a class="property__cta-button" href="https://wa.me/5215522425840?text=Hola%2C%20estoy%20interesado%20en%20la%20propiedad%20%222%20-%20Departamento%20en%20renta%20en%20Avenida%20Santa%20fe%2C%20parque%20La%20Mexicana%2C%20Torre%20Mil%C3%A1n%22.%0A%C2%BFPodr%C3%ADas%20darme%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank  ">
+      Contactar por WhatsApp
+    </a>
+  </div>
+  <div class="property__agent">
+    <div class="property__agent-broker">&nbsp;Carolina Guerrero</div>
+    <div class="property__agent-phone">
+      <a class="property__agent-number" href="tel:5522425840">&nbsp;55 2242 5840</a>
+    </div>
+  </div>
+  
+      <div>
+      <p class="property__location-label">Torre Milan, Santa Fe</p>
+        <a
+        href="https://www.google.com/maps?q=Torre%20Milan%2C%20Santa%20Fe"
+        target="_blank"
+        class="property__map-link"
+        >
+          Ir a ubicación &rarr;
+        </a>
+      </div>
+    </section>
+
+  </main>
+<script>
+  (function () {
+    const images = ["https://departamentosexclusivosensantafe.github.io/fichas/images/caroProp7_7.jpeg"];
+    let currentIndex = 0;
+
+    const img = document.querySelector(".property__hero-image");
+    const btnBack = document.getElementById("btnBack");
+    const btnForward = document.getElementById("btnForward");
+    const counter = document.getElementById("imageCounter");
+
+    if (!img || !btnBack || !btnForward || images.length === 0) return;
+
+    function updateSlider() {
+      img.src = images[currentIndex];
+
+      if (counter) {
+        counter.textContent = (currentIndex + 1) + " / " + images.length;
+      }
+    }
+
+    // 🔹 render inicial
+    updateSlider();
+
+    btnForward.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateSlider();
+    });
+
+    btnBack.addEventListener("click", () => {
+      currentIndex =
+        (currentIndex - 1 + images.length) % images.length;
+      updateSlider();
+    });
+
+    // Swipe support
+    let startX = 0;
+    let endX = 0;
+
+    img.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    img.addEventListener("touchend", (e) => {
+      endX = e.changedTouches[0].clientX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const diff = startX - endX;
+
+      // sensibilidad mínima
+      if (Math.abs(diff) < 50) return;
+
+      if (diff > 0) {
+        // swipe izquierda → siguiente
+        currentIndex = (currentIndex + 1) % images.length;
+      } else {
+        // swipe derecha → anterior
+        currentIndex =
+          (currentIndex - 1 + images.length) % images.length;
+      }
+
+      updateSlider();
+    }
+
+  })();
+
+</script>
+
+</body>
+</html>
