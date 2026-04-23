@@ -92,8 +92,20 @@ function fillPreview(previewData) {
 
     <section class="property__content">
 
-      <div>
-        <img class="property__hero-image" src="${image}" alt="${title}" />
+      <div class="property__hero-slider">
+        <img class="property__hero-image" src="${absoluteGallery[0] || image}" alt="${title}" />
+
+        <button class="property__btn property__btn-left" id="btnBack">
+          <img class="property__btn_image" src="${baseUrl}images/arrow_back.png" alt="Left arrow">
+        </button>
+
+        <button class="property__btn property__btn-right" id="btnForward">
+          <img class="property__btn_image" src="${baseUrl}images/arrow_forward.png" alt="Right arrow">
+        </button>
+      </div>
+
+      <div class="property__counter" id="imageCounter">
+        1 / ${absoluteGallery.length || 1}
       </div>
 
       <div>
@@ -109,19 +121,6 @@ function fillPreview(previewData) {
 
       <div>
         <p class="property__description">${description}</p>
-      </div>
-
-      <div class="property__image-gallery">
-        <img class="property__image" src="${absoluteGallery[0]}" alt="${title}">
-        <button class="property__btn property__btn-left" id="btnBack">
-          <img class="property__btn_image" src="${baseUrl}images/arrow_back.png" alt="Left arrow">
-        </button>
-        <button class="property__btn property__btn-right" id="btnForward">
-          <img class="property__btn_image" src="${baseUrl}images/arrow_forward.png" alt="Right arrow">
-        </button>
-      </div>
-      <div class="property__counter" id="imageCounter">
-        1 / 1
       </div>
         ${getAgentBlock(showAgent)}
       <div>
@@ -142,7 +141,7 @@ function fillPreview(previewData) {
     const images = ${JSON.stringify(absoluteGallery)};
     let currentIndex = 0;
 
-    const img = document.querySelector(".property__image");
+    const img = document.querySelector(".property__hero-image");
     const btnBack = document.getElementById("btnBack");
     const btnForward = document.getElementById("btnForward");
     const counter = document.getElementById("imageCounter");
@@ -170,6 +169,38 @@ function fillPreview(previewData) {
         (currentIndex - 1 + images.length) % images.length;
       updateSlider();
     });
+
+    // Swipe support
+    let startX = 0;
+    let endX = 0;
+
+    img.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    img.addEventListener("touchend", (e) => {
+      endX = e.changedTouches[0].clientX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const diff = startX - endX;
+
+      // sensibilidad mínima
+      if (Math.abs(diff) < 50) return;
+
+      if (diff > 0) {
+        // swipe izquierda → siguiente
+        currentIndex = (currentIndex + 1) % images.length;
+      } else {
+        // swipe derecha → anterior
+        currentIndex =
+          (currentIndex - 1 + images.length) % images.length;
+      }
+
+      updateSlider();
+    }
+
   })();
 
 </script>
@@ -178,8 +209,10 @@ function fillPreview(previewData) {
 </html>`;
   }
 
-  StorageService.setMaxPublishedId(id);
-
+  /*--------- En caso de que estemos editando una propiedad ya publicada ---------*/
+  if (Number(id) > StorageService.getMaxPublishedId()) {
+    StorageService.setMaxPublishedId(id);
+  }
   const htmlWithAgent = generateHTML(true);
   const htmlWithoutAgent = generateHTML(false);
 
